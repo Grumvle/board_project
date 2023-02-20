@@ -1,0 +1,40 @@
+ %기능%
+ 
+기능1 서블릿1
+MVC2 패턴 사용 
+게시판 프로젝트
+"맛집 게시판
+(GPS api로 위치 띄워주기)"
+추천수로 상단 띄우기
+"첨부파일이나 사진도 
+같이 게시글 올리기"
+MYSQL 사용
+로그인, 회원가입
+
+---------------------------------------------
+%기본 테이블%
+
+"번호, 작성자, 글제목, 글내용, 
+글 조회수 , 좋아요, 글 비밀번호, 
+글 작성일자, 글 수정일자"
+"create table BOARD(
+	board_no int,
+    board_writer varchar(30),
+    board_title varchar(50),
+    board_content varchar(2400),
+    board_viewcnt int,
+    board_likecnt int,
+    board_pwd int,
+    board_date date,
+    board_newdate date
+);"
+로그인 암호화
+https://willbfine.tistory.com/568
+git 허브 이클립스 연동
+https://s-bug.tistory.com/59
+
+------------------------------------------------
+차후 예정)
+"모바일 화면에서 
+크기에 맞게 앱만들기"
+소셜 로그인 기능 추가
