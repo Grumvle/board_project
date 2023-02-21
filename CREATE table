@@ -1,6 +1,5 @@
 create table BOARD(
     board_idx int primary key auto_increment,
-    board_no int,
     board_writer varchar(30),
     board_title varchar(50),
     board_content varchar(2400),
