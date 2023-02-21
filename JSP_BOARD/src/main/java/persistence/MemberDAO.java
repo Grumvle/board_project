@@ -10,12 +10,12 @@ public class MemberDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	String jdbc_driver = "com.mysql.cj.jdbc.Driver";
-	String jdbc_url = "jdbc:mysql://localhost/jspdb?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+	String jdbc_url = "jdbc:mysql://localhost/exam?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 
 	void connect() {
 		try {
 			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "jspbook", "1234");
+			conn = DriverManager.getConnection(jdbc_url,"root","1234");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,8 +58,6 @@ public class MemberDAO {
 		}
 		return true;
 	}
-
-	
 
 	// 회원의 정보를 삭제하는 메서드
 	public ArrayList<MemberVO> delete(String id) {

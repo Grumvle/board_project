@@ -2,18 +2,12 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<<<<<<< HEAD
-=======
 
-<html lang="en">
->>>>>>> refs/remotes/origin/master
-
-<<<<<<< HEAD
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Web Service Programming Homework</title>
-<link rel="stylesheet" href="resources/student.css" type="text/css"></link>
+<link rel="stylesheet" type="text/css"></link>
 </head>
 
 <body>
@@ -28,8 +22,7 @@
 	<div>
 
 		<form
-			action="http://localhost:8080/kyuhan_mvcdb/StudentServlet?cmd=join"
-			method="post">
+			action="http://localhost:8787/JSP_BOARD/MemberServlet?cmd=join" method="post">
 			<fieldset>
 				<legend>Personnel Information</legend>
 				<ul>
@@ -39,7 +32,7 @@
 					<li>아이디 : <input type="text" name="id" required
 						placeholder="공백없이 입력하세요"></li>
 						
-					<li>비밀번호 : <input type="text" name="pwd" required
+					<li>비밀번호 : <input type="password" name="pwd" required
 						placeholder="공백없이 입력하세요"></li>
 						
 					<li>전화번호 : <input type="text" name="phone" required
@@ -56,8 +49,8 @@
 			
 			<fieldset>
 			
-				<input type="submit" name="submit" value="보내기"> <input
-					type="reset" name="reset" value="다시 작성">
+				<input type="submit" name="submit" value="보내기"> 
+				<input type="reset" name="reset" value="다시 작성">
 			
 			</fieldset>
 			
@@ -67,7 +60,13 @@
 
 </body>
 </html>
-=======
+
+
+
+
+
+
+<!-- <html>
 <head>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="addr.js"></script>
@@ -170,5 +169,5 @@
 
     </form>
 </body>
-
->>>>>>> refs/remotes/origin/master
+</html>
+ -->
