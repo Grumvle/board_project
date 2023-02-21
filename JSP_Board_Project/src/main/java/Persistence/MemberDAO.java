@@ -119,8 +119,11 @@ public class MemberDAO {
 			pstmt.executeUpdate();
 			pstmt.close();
 		} catch (SQLException e) {
+
 			e.printStackTrace();
+
 		}
+
 		return memberlist;
 	}
 
