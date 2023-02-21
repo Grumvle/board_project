@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 </head>
-
+ssss
 <body>
 	<script>
 		alert("비밀번호가 일치하지 않습니다.")
