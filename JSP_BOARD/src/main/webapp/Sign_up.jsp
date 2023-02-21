@@ -8,54 +8,60 @@
 <meta charset="UTF-8">
 <title>Web Service Programming Homework</title>
 <link rel="stylesheet" type="text/css"></link>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="addr.js"></script>
+
+
 </head>
 
 <body>
 	<header>Create Your Account</header>
-	
+
 	<p id=sect>
-	
+
 		반갑습니다.<br> 웹 서비스 프로그래밍 학생들을 위한 커뮤니티입니다. <br>
-		
+
 	</p>
-	
+
 	<div>
 
-		<form
-			action="http://localhost:8787/JSP_BOARD/MemberServlet?cmd=join" method="post">
+		<form action="http://localhost:8787/JSP_BOARD/MemberServlet?cmd=join" method="post">
 			<fieldset>
 				<legend>Personnel Information</legend>
 				<ul>
 					<li>이름 : <input type="text" name="name" autofocus required
 						placeholder="공백없이 입력하세요"></li>
-						
-					<li>아이디 : <input type="text" name="id" required
-						placeholder="공백없이 입력하세요"></li>
-						
-					<li>비밀번호 : <input type="password" name="pwd" required
-						placeholder="공백없이 입력하세요"></li>
-						
-					<li>전화번호 : <input type="text" name="phone" required
-						placeholder="공백없이 입력하세요"></li>
-						
-					<li>주소 : <input type="text" name="addr"
-						placeholder="공백없이 입력하세요"></li>
-						
+
+					<li>아이디 : <input type="text" name="id" required placeholder="공백없이 입력하세요"></li>
+
+					<li>비밀번호 : <input type="password" name="pwd" required placeholder="공백없이 입력하세요"></li>
+
+					<li>전화번호 : <input type="text" name="phone" required placeholder="공백없이 입력하세요"></li>
+
+					<li>
+						주소 : 
+						<input class="addr" type="text" id="postcode" placeholder="우편번호" readonly>
+                    	<input type="button" id="postcode_button" onclick="open_Postcode()" value="우편번호 찾기"><br>
+                    	<input class="addr" type="text" id="road_address" placeholder="도로 주소" readonly><br>
+                    	<input class="addr" type="text" id="extra_address" placeholder="상세 주소"><br>
+					</li>
+					
 				</ul>
-				
+
 			</fieldset>
-			
+
 			<br>
-			
+
 			<fieldset>
-			
-				<input type="submit" name="submit" value="보내기"> 
-				<input type="reset" name="reset" value="다시 작성">
-			
+
+				<input type="submit" name="submit" value="보내기"> <input
+					type="reset" name="reset" value="다시 작성">
+
 			</fieldset>
-			
+
 		</form>
-		
+
 	</div>
 
 </body>
@@ -83,6 +89,7 @@
         height: 350px;
         width: 420px;
         border-radius: 15px;
+        border: center;
     }
 
     .can {
@@ -108,21 +115,12 @@
 	<header>Create Your Account</header>
     <form>
         <h2 align="center" font="bold">사용자 회원가입</h2>
-        <table align="center">
+        <table>
 
 
             <tr>
                 <th>이름 : </th>
                 <td><input class="can" type="text" name="name"></td>
-            </tr>
-            <tr>
-                <th>직업 : </th>
-                <td><input type="radio" name="job" value="0" checked>무직
-                    <input type="radio" name="job" value="1">학생
-                    <input type="radio" name="job" value="2">직장인
-                    <input type="radio" name="job" value="3">주부
-                    <input type="radio" name="job" value="4">군인
-                </td>
             </tr>
             <tr>
                 <th>아이디 : </th>
@@ -170,4 +168,4 @@
     </form>
 </body>
 </html>
- -->
+-->
