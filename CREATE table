@@ -1,5 +1,6 @@
 create table BOARD(
-	board_no int,
+    board_idx int primary key auto_increment,
+    board_no int,
     board_writer varchar(30),
     board_title varchar(50),
     board_content varchar(2400),
@@ -13,7 +14,7 @@ create table BOARD(
 Create table member(
 	name varchar(100),
 	job varchar(100),
-	id varchar(200),
+	id varchar(200) primary key,
 	pwd varchar(200),
 	phone varchar(200),
 	addr varchar(500)
