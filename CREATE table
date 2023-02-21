@@ -3,15 +3,15 @@ CREATE TABLE `board` (
   `board_writer` varchar(30) NOT NULL,
   `board_title` varchar(50) NOT NULL,
   `board_content` varchar(2400) NOT NULL,
-  `board_viewcnt` int DEFAULT 0,
-  `board_likecnt` int DEFAULT 0,
+  `board_viewcnt` int DEFAULT '0',
+  `board_likecnt` int DEFAULT '0',
   `board_pwd` int DEFAULT NULL,
-  `board_date` date NOT NULL,
-  `board_newdate` date NOT NULL,
+  `board_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `board_newdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`board_idx`),
   KEY `member_id_idx` (`board_writer`),
   CONSTRAINT `member_id` FOREIGN KEY (`board_writer`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE
-);
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `member` (
   `member_name` varchar(100) NOT NULL,
