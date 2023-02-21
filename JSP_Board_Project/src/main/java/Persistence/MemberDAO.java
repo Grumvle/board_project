@@ -137,7 +137,7 @@ public class MemberDAO {
 
 	// 회원 전체의 정보를 읽어오는 메서드
 	// 회원의 이름을 클릭했을시 그 한명의 정보를 불러오는 메서드이다.
-	public MemberVO read(String id) {
+	public MemberVO readOne(String id) {
 		connect();
 		String sql = "select * from student where id like ?";
 		MemberVO vo = new MemberVO();

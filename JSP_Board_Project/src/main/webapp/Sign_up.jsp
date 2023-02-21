@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Web Service Programming Homework</title>
+	<link rel="stylesheet" href="resources/student.css" type="text/css">
 
 </head>
 <style>
@@ -39,6 +41,7 @@
 </style>
 
 <body>
+	<header>Create Your Account</header>
     <form>
         <h2 align="center" font="bold">사용자 회원가입</h2>
         <table align="center">
@@ -73,9 +76,9 @@
                 <th>핸드폰 : </th>
                 <td>
                     <select style="width:50px; height:33px;">
-                        <option id="phone" value="010" name="phone">010</option>
-                        <option id="phone" value="011" name="phone">011</option>
-                        <option id="phone" value="017" name="phone">017</option>
+                        <option id="phone" value="010" >010</option>
+                        <option id="phone" value="011" >011</option>
+                        <option id="phone" value="017" >017</option>
                     </select>-
                     <input id="phone" type="tel" name="phone2" />-
                     <input id="phone" type="tel" name="phone3" />
