@@ -1,20 +1,23 @@
-create table BOARD(
-    board_idx int primary key auto_increment,
-    board_writer varchar(30),
-    board_title varchar(50),
-    board_content varchar(2400),
-    board_viewcnt int,
-    board_likecnt int,
-    board_pwd int,
-    board_date date,
-    board_newdate date
+CREATE TABLE `board` (
+  `board_idx` int NOT NULL AUTO_INCREMENT,
+  `board_writer` varchar(30) NOT NULL,
+  `board_title` varchar(50) NOT NULL,
+  `board_content` varchar(2400) NOT NULL,
+  `board_viewcnt` int DEFAULT NULL,
+  `board_likecnt` int DEFAULT NULL,
+  `board_pwd` int DEFAULT NULL,
+  `board_date` date NOT NULL,
+  `board_newdate` date NOT NULL,
+  PRIMARY KEY (`board_idx`),
+  KEY `member_id_idx` (`board_writer`),
+  CONSTRAINT `member_id` FOREIGN KEY (`board_writer`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-Create table member(
-	name varchar(100),
-	job varchar(100),
-	id varchar(200) primary key,
-	pwd varchar(200),
-	phone varchar(200),
-	addr varchar(500)
+CREATE TABLE `member` (
+  `member_name` varchar(100) NOT NULL,
+  `member_id` varchar(200) NOT NULL,
+  `member_pwd` varchar(200) NOT NULL,
+  `member_phone` varchar(200) NOT NULL,
+  `member_addr` varchar(500) NOT NULL,
+  PRIMARY KEY (`member_id`)
 );
