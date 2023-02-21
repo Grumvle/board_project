@@ -1,15 +1,15 @@
-Main.jsp
+<h3>Main.jsp</h3>
 
 
-Sign_up.jsp
+<h3>Sign_up.jsp</h3>
 
-  Register.jsp
+  <h3>Register.jsp</h3>
   
  
-sign_in.jsp
+<h3>sign_in.jsp</h3>
   
-  Board_Main.jsp(글 목록)
+  <h3>Board_Main.jsp(글 목록)</h3>
   
-    Board_Write.jsp(글 작성)
+    <h3>Board_Write.jsp(글 작성)</h3>
     
     
