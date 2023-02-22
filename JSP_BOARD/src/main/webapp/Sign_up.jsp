@@ -11,7 +11,7 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="addr.js"></script>
-
+<script src="Password_chk.js"></script>
 
 </head>
 
@@ -35,16 +35,18 @@
 
 					<li>아이디 : <input type="text" name="id" required placeholder="공백없이 입력하세요"></li>
 
-					<li>비밀번호 : <input type="password" name="pwd" required placeholder="공백없이 입력하세요"></li>
+					<li>비밀번호 : <input type="password" name="pwd" id="pwd" onchange="check_pw()" required placeholder="공백없이 입력하세요"></li>
+					
+					<li>비밀번호 확인: <input type="password" name="pwd_again" id="pwd_again" onchange="check_pw()" required placeholder="공백없이 입력하세요"><span id="check"></span></li>
 
 					<li>전화번호 : <input type="text" name="phone" required placeholder="공백없이 입력하세요"></li>
 
 					<li>
 						주소 : 
-						<input class="addr" type="text" id="postcode" placeholder="우편번호" readonly>
+						<input name="addr" type="text" id="postcode" placeholder="우편번호" readonly>
                     	<input type="button" id="postcode_button" onclick="open_Postcode()" value="우편번호 찾기"><br>
-                    	<input class="addr" type="text" id="road_address" placeholder="도로 주소" readonly><br>
-                    	<input class="addr" type="text" id="extra_address" placeholder="상세 주소"><br>
+                    	<input name="addr1" type="text" id="road_address" placeholder="도로 주소" readonly><br>
+                    	<input name="addr2" type="text" id="extra_address" placeholder="상세 주소"><br>
 					</li>
 					
 				</ul>
@@ -55,7 +57,7 @@
 
 			<fieldset>
 
-				<input type="submit" name="submit" value="보내기"> <input
+				<input type="button" name="submit" onclick="submit();" value="보내기"> <input
 					type="reset" name="reset" value="다시 작성">
 
 			</fieldset>

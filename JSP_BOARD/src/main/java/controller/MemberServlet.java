@@ -59,7 +59,7 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setId(request.getParameter("id"));
 			memberVO.setPwd(request.getParameter("pwd"));
 			memberVO.setPhone(request.getParameter("phone"));
-			memberVO.setAddr(request.getParameter("addr"));
+			memberVO.setAddr("("+request.getParameter("addr")+") "+request.getParameter("addr1")+" "+request.getParameter("addr2"));
 			
 			MemberDAO memberDAO = new MemberDAO();
 			

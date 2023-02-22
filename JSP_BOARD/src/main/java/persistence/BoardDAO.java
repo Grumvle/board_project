@@ -45,23 +45,8 @@ public class BoardDAO {
 		connect();
 		String nonPwd_sql = "";
 		String pwd_sql = "";
-		if (vo.getPwd == null) { // 비밀번호가 있다면 이 sql문을 써야한다.
-			pwd_sql = "insert into board(board_writer,board_title,board_content, board_pwd, board_date, board_newdate) value(?,?,?,?,default, null)";
-			try {
-				pstmt = conn.prepareStatement(pwd_sql);
-				pstmt.setString(1, vo.getWriter());
-				pstmt.setString(2, vo.getTitle());
-				pstmt.setString(3, vo.getContent());
-				pstmt.setInt(4, vo.getPwd());
-				pstmt.setString(5, vo.getDate());
-				pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;
-			} finally {
-				disconnect();
-			}
-		} else {
+
+		if ("".equals(vo.getPwd())) {
 
 			nonPwd_sql = "insert into board(board_writer,board_title,board_content, board_date, board_newdate)  value(?,?,?,default,null)";
 			try {
@@ -69,20 +54,33 @@ public class BoardDAO {
 				pstmt.setString(1, vo.getWriter());
 				pstmt.setString(2, vo.getTitle());
 				pstmt.setString(3, vo.getContent());
-				pstmt.setString(4, vo.getDate());
 				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			} finally {
+				disconnect();
 			}
-
-			catch (Exception e) {
+		} else { // 비밀번호가 있다면 이 sql문을 써야한다.
+			pwd_sql = "insert into board(board_writer,board_title,board_content, board_pwd, board_date, board_newdate) value(?,?,?,?,default, null)";
+			try {
+				pstmt = conn.prepareStatement(pwd_sql);
+				pstmt.setString(1, vo.getWriter());
+				pstmt.setString(2, vo.getTitle());
+				pstmt.setString(3, vo.getContent());
+				pstmt.setString(4, vo.getPwd());
+				pstmt.executeUpdate();
+			} catch (Exception e) {
 				e.printStackTrace();
 				return false;
 			} finally {
 				disconnect();
 			}
 		}
+
 		return true;
 	}
-	
+
 	public boolean update(BoardVO vo) {
 		connect();
 		String sql = "update board set board_title= ? ,board_content = ?, board_newdate = default where board_writer = '로그인된 사용자';";
@@ -94,8 +92,8 @@ public class BoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return true;
 	}
-	
+
 }
