@@ -6,7 +6,7 @@
  
             var pw = document.getElementById('pwd').value;
             
-            /*var SC = ["!","@","#","$","%"];
+            var SC = ["!","@","#","$","%","."];
             var check_SC = 0;
  
             if(pw.length < 6 || pw.length>16){
@@ -19,10 +19,10 @@
                 }
             }
             if(check_SC == 0){
-                window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+                window.alert('!,@,#,$,%,.의 특수문자가 들어가 있지 않습니다.')
                 document.getElementById('pw').value='';
             }
-            */
+           
             if(document.getElementById('pwd').value !='' && document.getElementById('pwd_again').value!=''){
                 if(document.getElementById('pwd').value==document.getElementById('pwd_again').value){
                     document.getElementById('check').innerHTML='비밀번호가 일치합니다.'

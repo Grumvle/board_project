@@ -45,29 +45,9 @@ public class BoardDAO {
 		connect();
 		String nonPwd_sql = "";
 		String pwd_sql = "";
-<<<<<<< HEAD
 
 		if ("".equals(vo.getPwd())) {
-=======
-		if (vo.getPwd() == 1) { // 비밀번호가 있다면 이 sql문을 써야한다.
-			pwd_sql = "insert into board(board_writer,board_title,board_content, board_pwd, board_date, board_newdate) value(?,?,?,?,default, null)";
-			try {
-				pstmt = conn.prepareStatement(pwd_sql);
-				pstmt.setString(1, vo.getWriter());
-				pstmt.setString(2, vo.getTitle());
-				pstmt.setString(3, vo.getContent());
-				pstmt.setInt(4, vo.getPwd());
-				pstmt.setString(5, vo.getDate());
-				pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;
-			} finally {
-				disconnect();
-			}
-		} else {
->>>>>>> refs/remotes/origin/master
-
+		
 			nonPwd_sql = "insert into board(board_writer,board_title,board_content, board_date, board_newdate)  value(?,?,?,default,null)";
 			try {
 				pstmt = conn.prepareStatement(nonPwd_sql);

@@ -1,9 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -80,13 +77,10 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setId(request.getParameter("id"));
 			memberVO.setPwd(request.getParameter("pwd"));
 			memberVO.setPhone(request.getParameter("phone"));
-<<<<<<< HEAD
 			memberVO.setAddr("("+request.getParameter("addr")+") "+request.getParameter("addr1")+" "+request.getParameter("addr2"));
 			
-=======
 			memberVO.setAddr(request.getParameter("addr"));
 
->>>>>>> refs/remotes/origin/master
 			MemberDAO memberDAO = new MemberDAO();
 
 			memberDAO.add(memberVO);
