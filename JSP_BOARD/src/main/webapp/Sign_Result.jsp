@@ -17,7 +17,7 @@ if (session.getAttribute("id") == null) {
 	<div>
 		<p>
 			<br> <a
-				href="http://localhost:8787/04_HomePage/StudentServlet?cmd=modify"
+				href="OneUserInfo.jsp"
 				target="_self"> <strong>회원 정보 수정</strong></a>
 		</p>
 	</div>
