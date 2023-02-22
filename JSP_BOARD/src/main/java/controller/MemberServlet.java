@@ -40,22 +40,7 @@ public class MemberServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-
-		String cmdReq = "";
 	
-//		 로그인 했을시 회원이 개인정보를 수정할수 있게 하는 메서드.
-//		 관리자 권한이 아니다.
-		if (cmdReq.equals("modify")) {
-			MemberDAO dao = new MemberDAO();
-			
-			ArrayList<MemberVO> memberList = dao.getMemberList();
-			request.setAttribute("memberList", memberList);
-			RequestDispatcher view = request.getRequestDispatcher("Update_user.jsp");
-			view.forward(request, response);
-			//hello
-		}
 	}
 
 	/**
