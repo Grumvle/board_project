@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,22 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MemberVO;
-import persistence.MemberDAO;
+import model.BoardVO;
+import persistence.BoardDAO;
 
 /**
- * Servlet implementation class MemberServlet
+ * Servlet implementation class BoardServlet
  */
-@WebServlet("/MemberServlet")
-public class MemberServlet extends HttpServlet {
-	
-	
+@WebServlet("/BoardServlet")
+public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MemberServlet() {
+	public BoardServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,8 +33,8 @@ public class MemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-	
 	}
 
 	/**
@@ -46,35 +43,29 @@ public class MemberServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 
 		String cmdReq = "";
-//		String message = "";
 
 		cmdReq = request.getParameter("cmd");
 		if (cmdReq.equals("join")) {
+			BoardVO boardVO = new BoardVO();
 
-			MemberVO memberVO = new MemberVO();
+			boardVO.setWriter(request.getParameter("writer"));
+			boardVO.setTitle(request.getParameter("title"));
+			boardVO.setContent(request.getParameter("content"));
+			boardVO.setPwd(request.getParameter("pwd"));
 
-			memberVO.setName(request.getParameter("name"));
-			memberVO.setId(request.getParameter("id"));
-			memberVO.setPwd(request.getParameter("pwd"));
-			memberVO.setPhone(request.getParameter("phone"));
-			memberVO.setAddr("("+request.getParameter("addr")+") "+request.getParameter("addr1")+" "+request.getParameter("addr2"));
+			BoardDAO boardDAO = new BoardDAO();
+
+			boardDAO.add(boardVO);
+
+			request.setAttribute("board", boardVO);
 			
-			memberVO.setAddr(request.getParameter("addr"));
-
-			MemberDAO memberDAO = new MemberDAO();
-
-			memberDAO.add(memberVO);
-
-			request.setAttribute("member", memberVO);
-
-			RequestDispatcher view = request.getRequestDispatcher("Result.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("Board_write.jsp");
 			view.forward(request, response);
 		}
 	}
-
 }

@@ -8,7 +8,7 @@ public class BoardVO {
 	private String content;
 	private int viewcnt;
 	private int likecnt;
-	private int pwd;
+	private String pwd;
 	private String date;
 	private String newdate;
 
@@ -60,11 +60,11 @@ public class BoardVO {
 		this.likecnt = likecnt;
 	}
 
-	public int getPwd() {
+	public String getPwd() {
 		return pwd;
 	}
 
-	public void setPwd(int pwd) {
+	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
 

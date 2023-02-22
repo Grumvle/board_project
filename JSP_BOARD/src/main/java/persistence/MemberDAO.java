@@ -75,13 +75,13 @@ public class MemberDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MemberVO vo = new MemberVO();
-				
+
 				vo.setName(rs.getString("member_name"));
 				vo.setId(rs.getString("member_id"));
 				vo.setPwd(rs.getString("member_pwd"));
 				vo.setPhone(rs.getString("member_phone"));
 				vo.setAddr(rs.getString("member_addr"));
-				
+
 				memberlist.add(vo);
 			}
 			rs.close();
