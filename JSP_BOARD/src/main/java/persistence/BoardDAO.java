@@ -45,7 +45,7 @@ public class BoardDAO {
 		connect();
 		String nonPwd_sql = "";
 		String pwd_sql = "";
-		if (vo.getPwd == null) { // 비밀번호가 있다면 이 sql문을 써야한다.
+		if (vo.getPwd() == 1) { // 비밀번호가 있다면 이 sql문을 써야한다.
 			pwd_sql = "insert into board(board_writer,board_title,board_content, board_pwd, board_date, board_newdate) value(?,?,?,?,default, null)";
 			try {
 				pstmt = conn.prepareStatement(pwd_sql);
