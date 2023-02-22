@@ -69,13 +69,13 @@ public class Sign_inServlet extends HttpServlet {
 
 		// dao 부분 세션을 쓰기위해서는 dao를 이곳에 구현할 수 밖에 없다.
 		String jdbc_driver = "com.mysql.cj.jdbc.Driver";
-		String jdbc_url = "jdbc:mysql://localhost/exam?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+		String jdbc_url = "jdbc:mysql://localhost/jspdb?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 
 		boolean sign_b = false;
 
 		try {
 			Class.forName(jdbc_driver);
-			con = DriverManager.getConnection(jdbc_url, "web", "1234");
+			con = DriverManager.getConnection(jdbc_url, "jspbook", "1234");
 			String sql = "select * from member where member_id='" + post_id + "' and member_pwd='" + post_pw + "'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
