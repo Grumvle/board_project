@@ -54,7 +54,7 @@ public class MemberServlet extends HttpServlet {
 			request.setAttribute("memberList", memberList);
 			RequestDispatcher view = request.getRequestDispatcher("Update_user.jsp");
 			view.forward(request, response);
-
+			//hello
 		}
 	}
 
