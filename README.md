@@ -9,10 +9,11 @@
 
   <h3>Register.jsp</h3>
         
+      
+      
       <h3>Sign_in.jsp</h3>
        
        
-<h3>sign_in.jsp</h3>
   
   <h3>Board_Main.jsp(글 목록)</h3>
   
