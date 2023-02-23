@@ -110,7 +110,7 @@ public class MemberServlet extends HttpServlet {
 //			ArrayList<MemberVO> memberList = dao.delete(request.getParameter("id"));
 //			request.setAttribute("memberList", memberList);
 		}
-		
+		//
 		else if (cmdReq.equals("update")) {
 
 			// 멤버에 집어넣기 위한 MemberVO에 대한 참조변수를 생성
