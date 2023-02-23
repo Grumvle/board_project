@@ -49,7 +49,7 @@ public class BoardServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		HttpSession session = request.getSession();
-		String loginId = (String) session.getAttribute("ID");
+		String loginId = (String) session.getAttribute("id");
 
 		String cmdReq = "";
 

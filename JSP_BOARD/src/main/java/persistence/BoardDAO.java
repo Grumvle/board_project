@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import javax.servlet.http.HttpSession;
-
 import model.BoardVO;
 
 public class BoardDAO {
