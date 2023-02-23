@@ -100,7 +100,6 @@ public class Sign_inServlet extends HttpServlet {
 				httpSession.setAttribute("addr1", member_addrCut[1]);
 				httpSession.setAttribute("addr2", member_addrCut[2]);
 
-				httpSession.setAttribute("addr", member_addr);
 				response.sendRedirect("Sign_Result.jsp");
 //
 			}
