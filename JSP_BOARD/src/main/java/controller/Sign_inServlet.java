@@ -83,7 +83,7 @@ public class Sign_inServlet extends HttpServlet {
 				sign_b = true;
 			}
 
-			String[] member_addrCut = member_addr.split("=");
+			/* String[] member_addrCut = member_addr.split("="); */
 
 			// post_id를 'admin' 즉 관리자 권한으로 계정을 받았을 때 관리자 전용 세션을
 			// 생성하고 관리자 전용 로그인결과 성공 화면. 그리고 나서 관리자 전용 페이지로 넘어가게 한다.
@@ -100,13 +100,19 @@ public class Sign_inServlet extends HttpServlet {
 
 				httpSession.setAttribute("phone", member_phone);
 
-				httpSession.setAttribute("addr", member_addrCut[0]);
-				httpSession.setAttribute("addr1", member_addrCut[1]);
-				httpSession.setAttribute("addr2", member_addrCut[2]);
+				httpSession.setAttribute("addr", member_addr);
 
-				RequestDispatcher view = request.getRequestDispatcher("Admin_Sign_Result.jsp");
+				/*
+				 * httpSession.setAttribute("addr", member_addrCut[0]);
+				 * httpSession.setAttribute("addr1", member_addrCut[1]);
+				 * httpSession.setAttribute("addr2", member_addrCut[2]);
+				 */
+
+				RequestDispatcher view = request.getRequestDispatcher("../Admin_Sign_Result.jsp");
 				view.forward(request, response);
 
+
+				response.sendRedirect("Sign_Result.jsp");
 //
 			} else if (sign_b) {
 				System.out.println("[ 회원님 로그인 성공 ]");
@@ -121,16 +127,19 @@ public class Sign_inServlet extends HttpServlet {
 
 				httpSession.setAttribute("phone", member_phone);
 
-				httpSession.setAttribute("addr", member_addrCut[0]);
-				httpSession.setAttribute("addr1", member_addrCut[1]);
-				httpSession.setAttribute("addr2", member_addrCut[2]);
+				httpSession.setAttribute("addr", member_addr);
 
-				response.sendRedirect("Sign_Result.jsp");
+				/*
+				 * httpSession.setAttribute("addr", member_addrCut[0]);
+				 * httpSession.setAttribute("addr1", member_addrCut[1]);
+				 * httpSession.setAttribute("addr2", member_addrCut[2]);
+				 */
+
+				response.sendRedirect("../JSP_BOARD/src/main/webapp/Sign/LogIn/Sign_Result.jsp");
 //
-			} else 
-			{
+			} else {
 				System.out.println("아이디 또는 비밀번호가 다릅니다.");
-				response.sendRedirect("Sign_in_failed.jsp");
+				response.sendRedirect("../JSP_BOARD/src/main/webapp/Sign/LogIn/Sign_In_failed.jsp");
 			}
 
 		} catch (Exception e) {

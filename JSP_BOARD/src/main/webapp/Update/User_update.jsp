@@ -27,7 +27,8 @@ if (session.getAttribute("id") == null) {
 	<div align="center">
 		<HR>
 		<form
-			action="http://localhost:8787/JSP_BOARD/MemberServlet?cmd=update" method="post">
+			action="http://localhost:8787/JSP_BOARD/MemberServlet?cmd=update"
+			method="post">
 
 			<fieldset>
 				<legend>개인정보 수정</legend>
@@ -44,12 +45,15 @@ if (session.getAttribute("id") == null) {
 					<li>전화번호 : <input type="text" name="userphone"
 						value=<%=session.getAttribute("phone")%>>
 					<li>
-					<li>주소 : <input name="addr" type="text" id="postcode"
+					<li>주소 : <input type="text" name="useraddr"
+						value=<%=session.getAttribute("addr")%>>
+					<li>
+						<%-- 	<li>주소 : <input name="addr" type="text" id="postcode"
 						placeholder="우편번호" readonly value='<%=session.getAttribute("addr")%>'> 
 						<input type="button" id="postcode_button" onclick="open_Postcode()" value="우편번호 찾기" ><br>
 						<input name="addr1" type="text" id="road_address" placeholder="도로 주소" readonly value ='<%=session.getAttribute("addr1")%>'><br> 
 						<input name="addr2" type="text" id="extra_address" placeholder="상세 주소" value='<%=session.getAttribute("addr2")%>'><br>
-					<li>
+					<li> --%>
 				</ul>
 			</fieldset>
 			<br>

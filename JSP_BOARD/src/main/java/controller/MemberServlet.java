@@ -73,10 +73,13 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setId(request.getParameter("id"));
 			memberVO.setPwd(request.getParameter("pwd"));
 			memberVO.setPhone(request.getParameter("phone"));
-			memberVO.setAddr("(" + request.getParameter("addr") + ") " + request.getParameter("addr1") + " "
-					+ request.getParameter("addr2"));
-
 			memberVO.setAddr(request.getParameter("addr"));
+			/*
+			 * memberVO.setAddr("(" + request.getParameter("addr") + ") " +
+			 * request.getParameter("addr1") + " " + request.getParameter("addr2"));
+			 */
+
+			/* memberVO.setAddr(request.getParameter("addr")); */
 
 			MemberDAO memberDAO = new MemberDAO();
 
@@ -117,8 +120,11 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setName(request.getParameter("username"));
 			memberVO.setPwd(request.getParameter("userpasswd"));
 			memberVO.setPhone(request.getParameter("userphone"));
-			memberVO.setAddr("(" + request.getParameter("addr") + ")=" + request.getParameter("addr1") + "="
-					+ request.getParameter("addr2"));
+			memberVO.setAddr(request.getParameter("useraddr"));
+			/*
+			 * memberVO.setAddr("(" + request.getParameter("addr") + ")=" +
+			 * request.getParameter("addr1") + "=" + request.getParameter("addr2"));
+			 */
 //
 			MemberDAO dao = new MemberDAO();
 			if (dao.update(memberVO)) {

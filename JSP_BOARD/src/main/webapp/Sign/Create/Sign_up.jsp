@@ -45,7 +45,11 @@
 
 					<li>전화번호 : <input type="text" name="phone" required
 						placeholder="공백없이 입력하세요"></li>
-
+					
+					<li>주소 : <input type="text" name="addr" required
+						placeholder="공백없이 입력하세요"></li>
+					
+<!-- 					
 					<li>주소 : <input name="addr" type="text" id="postcode"
 						placeholder="우편번호" readonly> <input type="button"
 						id="postcode_button" onclick="open_Postcode()" value="우편번호 찾기"><br>
@@ -53,7 +57,7 @@
 						placeholder="도로 주소" readonly><br> <input name="addr2"
 						type="text" id="extra_address" placeholder="상세 주소"><br>
 					</li>
-
+ -->
 				</ul>
 			</fieldset>
 			<br>

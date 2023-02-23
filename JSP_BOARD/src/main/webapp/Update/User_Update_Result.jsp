@@ -12,7 +12,7 @@
 	<p id=sect><%=request.getAttribute("message")%><br>
 	<div>
 		<%
-		MemberVO member = (MemberVO) request.getAttribute("member");
+		MemberVO member = (MemberVO)request.getAttribute("member");
 		%>
 		<table>
 			<tr>
