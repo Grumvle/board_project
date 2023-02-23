@@ -83,7 +83,7 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setPwd(request.getParameter("userpasswd"));
 			memberVO.setPhone(request.getParameter("userphone"));
 			memberVO.setAddr(request.getParameter("useraddr"));
-
+//
 			MemberDAO dao = new MemberDAO();
 			if (dao.update(memberVO)) {
 				message = "수정이 완료되었습니다.";

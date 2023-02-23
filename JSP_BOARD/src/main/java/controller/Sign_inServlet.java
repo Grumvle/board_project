@@ -96,7 +96,7 @@ public class Sign_inServlet extends HttpServlet {
 				httpSession.setAttribute("addr", member_addr);
 
 				response.sendRedirect("Sign_Result.jsp");
-
+//
 			}
 
 			else

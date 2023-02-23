@@ -7,6 +7,6 @@
 <title>회원 삭제</title>
 </head>
 <body>
-ssss
+<!-- ssss -->
 </body>
 </html>

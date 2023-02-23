@@ -15,7 +15,7 @@ if (session.getAttribute("id") == null) {
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+</head><!--  -->
 <body>
 	<h1><%=session.getAttribute("id")%>님 <small>반갑습니다.</small>
 	</h1>

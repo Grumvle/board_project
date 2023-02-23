@@ -15,7 +15,7 @@
 <script src="Password_chk.js"></script>
 <script src="Submit_chk.js"></script>
 
-
+<!--  -->
 <link rel="stylesheet" href="resources/student.css" type="text/css"></link>
 </head>
 

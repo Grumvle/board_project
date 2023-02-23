@@ -18,7 +18,7 @@
 			<tr>
 				<th>아이디</th>
 				<th><%=member.getId()%></th>
-
+<!--  -->
 			</tr>
 			<tr>
 				<th>이름</th>

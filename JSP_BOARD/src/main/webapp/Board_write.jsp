@@ -8,7 +8,7 @@
 </head>
 <body>
 	<header>게시글을 작성하세요</header>
-	
+	<!--  -->
 	<div>
 		<form action="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=join" method="post">
 			<fieldset>

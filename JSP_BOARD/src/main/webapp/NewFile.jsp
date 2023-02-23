@@ -9,7 +9,7 @@
 <title>JSP_BOARD_SIGN_UP</title>
 <link rel="stylesheet" href="resources/student.css" type="text/css"></link>
 </head>
-
+<!--  -->
 <body>
 	<header>Create Your Account</header>
 	<p id=sect>

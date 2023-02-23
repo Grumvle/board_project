@@ -17,7 +17,7 @@
                 if(pw.indexOf(SC[i]) != -1){
                     check_SC = 1;
                 }
-            }
+            }/**/
             if(check_SC == 0){
                 window.alert('!,@,#,$,%,.의 특수문자가 들어가 있지 않습니다.')
                 document.getElementById('pw').value='';

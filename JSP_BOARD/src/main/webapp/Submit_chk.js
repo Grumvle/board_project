@@ -12,7 +12,7 @@
 		 document.fform.pwd_again.select();
 		 document.fform.pwd_again.value = "";
 		 alert("패스워드 다름");
-		 
+		 /**/
 	 }else if(document.fform.pwd.value == document.fform.pwd_again.value){
 		 alert("에러 없음");
 		 return true;

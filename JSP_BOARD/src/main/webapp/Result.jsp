@@ -23,7 +23,7 @@
 			<tr>
 				<th>아이디</th>
 				<th><%=member.getId()%></th>
-
+<!--  -->
 			</tr>
 			<tr>
 				<th>비밀번호</th>
