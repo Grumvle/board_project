@@ -18,8 +18,7 @@ import persistence.MemberDAO;
  */
 @WebServlet("/MemberServlet")
 public class MemberServlet extends HttpServlet {
-	
-	
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -37,7 +36,7 @@ public class MemberServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-	
+
 	}
 
 	/**
@@ -51,7 +50,7 @@ public class MemberServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		String cmdReq = "";
-//		String message = "";
+		String message = "";
 
 		cmdReq = request.getParameter("cmd");
 		if (cmdReq.equals("join")) {
@@ -62,8 +61,9 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setId(request.getParameter("id"));
 			memberVO.setPwd(request.getParameter("pwd"));
 			memberVO.setPhone(request.getParameter("phone"));
-			memberVO.setAddr("("+request.getParameter("addr")+") "+request.getParameter("addr1")+" "+request.getParameter("addr2"));
-			
+			memberVO.setAddr("(" + request.getParameter("addr") + ") " + request.getParameter("addr1") + " "
+					+ request.getParameter("addr2"));
+
 			memberVO.setAddr(request.getParameter("addr"));
 
 			MemberDAO memberDAO = new MemberDAO();
@@ -73,6 +73,29 @@ public class MemberServlet extends HttpServlet {
 			request.setAttribute("member", memberVO);
 
 			RequestDispatcher view = request.getRequestDispatcher("Result.jsp");
+			view.forward(request, response);
+
+		} else if (cmdReq.equals("update")) {
+
+			// 멤버에 집어넣기 위한 MemberVO에 대한 참조변수를 생성
+			MemberVO memberVO = new MemberVO();
+			memberVO.setId(request.getParameter("userid"));
+			memberVO.setName(request.getParameter("username"));
+			memberVO.setPwd(request.getParameter("userpasswd"));
+			memberVO.setPhone(request.getParameter("userphone"));
+			memberVO.setAddr(request.getParameter("useraddr"));
+
+			MemberDAO dao = new MemberDAO();
+			if (dao.update(memberVO)) {
+				message = "수정이 완료되었습니다.";
+			} else {
+				message = "수정을 실패하였습니다.";
+			}
+
+			request.setAttribute("message", message);
+			request.setAttribute("member", memberVO);
+
+			RequestDispatcher view = request.getRequestDispatcher("User_Update_Result.jsp");
 			view.forward(request, response);
 		}
 	}

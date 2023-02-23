@@ -178,13 +178,15 @@ public class MemberDAO {
 	// 회원의 정보를 수정하는 메서드
 	public boolean update(MemberVO vo) {
 		connect();
-		String sql = "update member set member_pwd=?, member_phone=?, member_addr=? where member_id = '로그인된 사용자 아이디'";
+		String sql = "update member set member_pwd=?, member_name=?, member_phone=?, member_addr=? where member_id = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, vo.getPwd());
-			pstmt.setString(2, vo.getPhone());
-			pstmt.setString(3, vo.getAddr());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getPhone());
+			pstmt.setString(4, vo.getAddr());
+			pstmt.setString(5, vo.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
