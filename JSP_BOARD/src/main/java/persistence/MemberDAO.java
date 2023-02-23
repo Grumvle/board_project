@@ -114,27 +114,43 @@ public class MemberDAO {
 		return true;
 	}
 
-	// 회원의 정보를 삭제하는 메서드
-	public ArrayList<MemberVO> delete(String id) {
+	public boolean delete(MemberVO vo) {
 		connect();
-		ArrayList<MemberVO> memberlist = new ArrayList<MemberVO>();
-		String sql = "delete from member where id = ? ";
-
+		String sql = "delete from member where member_id = ? ";
 		try {
-
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, vo.getId());
 			pstmt.executeUpdate();
-			pstmt.close();
-
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-
+			return false;
+		} finally {
+			disconnect();
 		}
-
-		return memberlist;
+		return true;
 	}
+
+//	// 회원의 정보를 삭제하고 전체 리스트를 ArrayList를 반환하는 메서드
+//	public ArrayList<MemberVO> delete(String id) {
+//		connect();
+//		ArrayList<MemberVO> memberlist = new ArrayList<MemberVO>();
+//		String sql = "delete from member where member_id = ? ";
+//
+//		try {
+//
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, id);
+//			pstmt.executeUpdate();
+//			pstmt.close();
+//
+//		} catch (SQLException e) {
+//
+//			e.printStackTrace();
+//
+//		}
+//
+//		return memberlist;
+//	}
 
 	/*
 	 * // 회원 한명의 정보를 읽어오는 메서드. public MemberVO readOne(String username) { connect();

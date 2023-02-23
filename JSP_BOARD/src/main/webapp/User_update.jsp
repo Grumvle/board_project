@@ -3,7 +3,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="model.*"%>
-<% %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -23,7 +23,7 @@ if (session.getAttribute("id") == null) {
 <title>회원정보 수정</title>
 </head>
 <body>
-	<p id=sect>커뮤니티 가입을 축하합니다.</p>
+	<p id=sect>회원의 정보를 수정합니다.</p>
 	<div align="center">
 		<HR>
 		<form

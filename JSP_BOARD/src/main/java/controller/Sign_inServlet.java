@@ -96,10 +96,14 @@ public class Sign_inServlet extends HttpServlet {
 
 				httpSession.setAttribute("phone", member_phone);
 
+<<<<<<< HEAD
 				httpSession.setAttribute("addr", member_addrCut[0]);
 				httpSession.setAttribute("addr1", member_addrCut[1]);
 				httpSession.setAttribute("addr2", member_addrCut[2]);
 
+=======
+				httpSession.setAttribute("addr", member_addr);
+>>>>>>> refs/remotes/origin/master
 				response.sendRedirect("Sign_Result.jsp");
 //
 			}

@@ -16,5 +16,9 @@ if (session.getAttribute("id") == null) {
 	<a href="Sign_out.jsp">로그아웃</a>
 	<!--  -->
 	<a href="User_update.jsp">회원정보 수정 </a>
+
+	<!-- 회원 탈퇴 시  -->
+	<a href="Delete_User.jsp"
+		target="_self">회원 탈퇴 </a>
 </body>
 </html>
