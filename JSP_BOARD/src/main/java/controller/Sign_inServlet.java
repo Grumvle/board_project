@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -80,11 +82,13 @@ public class Sign_inServlet extends HttpServlet {
 				member_addr = rs.getString("member_addr");
 				sign_b = true;
 			}
-			
+
 			String[] member_addrCut = member_addr.split("=");
-			
-			if (sign_b) {
-				System.out.println("[ 로그인 성공 ]");
+
+			// post_id를 'admin' 즉 관리자 권한으로 계정을 받았을 때 관리자 전용 세션을
+			// 생성하고 관리자 전용 로그인결과 성공 화면. 그리고 나서 관리자 전용 페이지로 넘어가게 한다.
+			if (post_id.equals("admin")) {
+				System.out.println("[[ 관리자 권한으로 로그인 성공 ]]");
 
 				HttpSession httpSession = request.getSession(true);
 
@@ -100,19 +104,33 @@ public class Sign_inServlet extends HttpServlet {
 				httpSession.setAttribute("addr1", member_addrCut[1]);
 				httpSession.setAttribute("addr2", member_addrCut[2]);
 
-				httpSession.setAttribute("addr", member_addr);
+				RequestDispatcher view = request.getRequestDispatcher("Admin_Sign_Result.jsp");
+				view.forward(request, response);
+
+//
+			} else if (sign_b) {
+				System.out.println("[ 회원님 로그인 성공 ]");
+
+				HttpSession httpSession = request.getSession(true);
+
+				httpSession.setAttribute("name", member_name);
+
+				httpSession.setAttribute("id", member_id);
+
+				httpSession.setAttribute("pw", member_pwd);
+
+				httpSession.setAttribute("phone", member_phone);
+
+				httpSession.setAttribute("addr", member_addrCut[0]);
+				httpSession.setAttribute("addr1", member_addrCut[1]);
+				httpSession.setAttribute("addr2", member_addrCut[2]);
+
 				response.sendRedirect("Sign_Result.jsp");
 //
-			}
-
-			else
-
+			} else 
 			{
-
 				System.out.println("아이디 또는 비밀번호가 다릅니다.");
-
 				response.sendRedirect("Sign_in_failed.jsp");
-
 			}
 
 		} catch (Exception e) {
@@ -128,7 +146,6 @@ public class Sign_inServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.getStackTrace();
 			}
-
 			// TODO Auto-generated method stub
 			doGet(request, response);
 		}

@@ -213,4 +213,20 @@ public class MemberDAO {
 		return true;
 	}
 
+	public ArrayList<MemberVO> delete(String id) {
+		connect();
+		ArrayList<MemberVO> memberlist = new ArrayList<MemberVO>();
+		String sql = "delete from member where member_id=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeQuery();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return memberlist;
+	}
+
 }

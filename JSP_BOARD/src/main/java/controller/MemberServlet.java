@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,9 +35,9 @@ public class MemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		request.setCharacterEncoding("UTF-8");
-//		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 
 //		String cmdReq = "";
 //		if (cmdReq.equals("OneUserList")) {
@@ -47,7 +48,7 @@ public class MemberServlet extends HttpServlet {
 //			RequestDispatcher view = request.getRequestDispatcher("");
 //			view.forward(request, response);
 //		}
-
+//
 	}
 
 	/**
@@ -72,8 +73,10 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setId(request.getParameter("id"));
 			memberVO.setPwd(request.getParameter("pwd"));
 			memberVO.setPhone(request.getParameter("phone"));
-			memberVO.setAddr("(" + request.getParameter("addr") + ")=" + request.getParameter("addr1") + "="
+			memberVO.setAddr("(" + request.getParameter("addr") + ") " + request.getParameter("addr1") + " "
 					+ request.getParameter("addr2"));
+
+			memberVO.setAddr(request.getParameter("addr"));
 
 			MemberDAO memberDAO = new MemberDAO();
 
@@ -106,9 +109,7 @@ public class MemberServlet extends HttpServlet {
 //			 보내는지가 궁금하다. 그부분은 따로 공부를 해야겠다.
 //			ArrayList<MemberVO> memberList = dao.delete(request.getParameter("id"));
 //			request.setAttribute("memberList", memberList);
-		}
-		//
-		else if (cmdReq.equals("update")) {
+		} else if (cmdReq.equals("update")) {
 
 			// 멤버에 집어넣기 위한 MemberVO에 대한 참조변수를 생성
 			MemberVO memberVO = new MemberVO();
@@ -116,7 +117,8 @@ public class MemberServlet extends HttpServlet {
 			memberVO.setName(request.getParameter("username"));
 			memberVO.setPwd(request.getParameter("userpasswd"));
 			memberVO.setPhone(request.getParameter("userphone"));
-			memberVO.setAddr("(" + request.getParameter("addr") + ")=" + request.getParameter("addr1") + "="+ request.getParameter("addr2"));
+			memberVO.setAddr("(" + request.getParameter("addr") + ")=" + request.getParameter("addr1") + "="
+					+ request.getParameter("addr2"));
 //
 			MemberDAO dao = new MemberDAO();
 			if (dao.update(memberVO)) {
