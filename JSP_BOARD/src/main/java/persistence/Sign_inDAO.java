@@ -12,7 +12,7 @@
 //	private PreparedStatement pstmt = null;
 //	private ResultSet rs = null;
 //	String jdbc_driver = "com.mysql.cj.jdbc.Driver";
-//	String jdbc_url = "jdbc:mysql://localhost/exam?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+//	String jdbc_url = "jdbc:mysql://localhost/jspdb?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 //
 //	void connect() {
 //		try {
