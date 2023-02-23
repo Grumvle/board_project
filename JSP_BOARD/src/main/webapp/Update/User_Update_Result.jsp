@@ -12,13 +12,13 @@
 	<p id=sect><%=request.getAttribute("message")%><br>
 	<div>
 		<%
-		MemberVO member = (MemberVO)request.getAttribute("member");
+		MemberVO member = (MemberVO) request.getAttribute("member");
 		%>
 		<table>
 			<tr>
 				<th>아이디</th>
 				<th><%=member.getId()%></th>
-<!--  -->
+				<!--  -->
 			</tr>
 			<tr>
 				<th>이름</th>
