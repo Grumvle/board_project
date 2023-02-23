@@ -80,6 +80,9 @@ public class Sign_inServlet extends HttpServlet {
 				member_addr = rs.getString("member_addr");
 				sign_b = true;
 			}
+			
+			String[] member_addrCut = member_addr.split("=");
+			
 			if (sign_b) {
 				System.out.println("[ 로그인 성공 ]");
 
@@ -93,7 +96,9 @@ public class Sign_inServlet extends HttpServlet {
 
 				httpSession.setAttribute("phone", member_phone);
 
-				httpSession.setAttribute("addr", member_addr);
+				httpSession.setAttribute("addr", member_addrCut[0]);
+				httpSession.setAttribute("addr1", member_addrCut[1]);
+				httpSession.setAttribute("addr2", member_addrCut[2]);
 
 				response.sendRedirect("Sign_Result.jsp");
 //

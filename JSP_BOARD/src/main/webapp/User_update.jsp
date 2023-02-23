@@ -17,7 +17,9 @@ if (session.getAttribute("id") == null) {
 <head>
 <meta charset="UTF-8">
 
-<!--  -->
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="addr.js"></script>
 <title>회원정보 수정</title>
 </head>
 <body>
@@ -25,8 +27,7 @@ if (session.getAttribute("id") == null) {
 	<div align="center">
 		<HR>
 		<form
-			action="http://localhost:8787/JSP_BOARD/MemberServlet?cmd=update"
-			method="post">
+			action="http://localhost:8787/JSP_BOARD/MemberServlet?cmd=update" method="post">
 
 			<fieldset>
 				<legend>개인정보 수정</legend>
@@ -34,7 +35,7 @@ if (session.getAttribute("id") == null) {
 					<li>아이디 : <input type="text" name="userid"
 						value=<%=session.getAttribute("id")%> readonly>
 					<li>
-					<li>비밀번호 : <input type="text" name="userpasswd"
+					<li>비밀번호 : <input type="password" name="userpasswd"
 						value=<%=session.getAttribute("pw")%>>
 					<li>
 					<li>이름 : <input type="text" name="username"
@@ -43,8 +44,11 @@ if (session.getAttribute("id") == null) {
 					<li>전화번호 : <input type="text" name="userphone"
 						value=<%=session.getAttribute("phone")%>>
 					<li>
-					<li>주소 : <input type="text" name="useraddr"
-						value=<%=session.getAttribute("addr")%>>
+					<li>주소 : <input name="addr" type="text" id="postcode"
+						placeholder="우편번호" readonly value='<%=session.getAttribute("addr")%>'> 
+						<input type="button" id="postcode_button" onclick="open_Postcode()" value="우편번호 찾기" ><br>
+						<input name="addr1" type="text" id="road_address" placeholder="도로 주소" readonly value ='<%=session.getAttribute("addr1")%>'><br> 
+						<input name="addr2" type="text" id="extra_address" placeholder="상세 주소" value='<%=session.getAttribute("addr2")%>'><br>
 					<li>
 				</ul>
 			</fieldset>
