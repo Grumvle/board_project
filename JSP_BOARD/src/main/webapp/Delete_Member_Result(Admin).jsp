@@ -14,8 +14,10 @@
 	</div>
 	<div>
 		<p>
-			<br> <a href="http://localhost:8787/JSP_BOARD/Main.jsp"
-				target="_self"> <strong>메인 페이지로 이동</strong></a>
+			<br> <button onclick="location.href='http://localhost:8787/JSP_BOARD/Main.jsp';"
+				> <strong>메인 페이지로 이동</strong></button>
+			 <button onclick="location.href='http://localhost:8787/JSP_BOARD/Admin_Sign_Result.jsp';"
+			> <strong>관리 페이지로 이동</strong></button>
 		</p>
 	</div>
 </body>

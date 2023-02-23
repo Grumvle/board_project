@@ -15,10 +15,9 @@ if (session.getAttribute("id") == null) {
 	</h1>
 	<!--  -->
 	<!-- 회원 탈퇴 시  -->
-	<a
-		href="http://localhost:8787/JSP_BOARD/AdminServlet?cmd=Member_List(Admin)"
-		target="_self">회원 삭제.</a>
-	<a href="User_update(Admin).jsp">회원정보 수정 </a>
-	<a href="Sign_out.jsp">관리자 로그아웃</a>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/AdminServlet?cmd=Member_List(Admin)';"
+		>회원 삭제.</button>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/User_update(Admin).jsp';">회원정보 수정 </button>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/Sign_out.jsp';">관리자 로그아웃</button>
 </body>
 </html>

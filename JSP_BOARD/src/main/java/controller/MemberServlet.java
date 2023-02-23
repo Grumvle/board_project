@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,7 +37,13 @@ public class MemberServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
 
+//			 이해가 안되는 부분은 jsp에서 cmd로 메시지를 서블릿으로 보낼때 어떻게 id값을 getParameter로
+//			 보내는지가 궁금하다. 그부분은 따로 공부를 해야겠다.
+//			ArrayList<MemberVO> memberList = dao.delete(request.getParameter("id"));
+//			request.setAttribute("memberList", memberList);
+		
 //		String cmdReq = "";
 //		if (cmdReq.equals("OneUserList")) {
 //			MemberDAO dao = new MemberDAO();
@@ -49,8 +54,8 @@ public class MemberServlet extends HttpServlet {
 //			view.forward(request, response);
 //		}
 //
+	
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -95,9 +100,7 @@ public class MemberServlet extends HttpServlet {
 
 		else if (cmdReq.equals("delete")) {
 			MemberVO memberVO = new MemberVO();
-
 			memberVO.setId(request.getParameter("id"));
-
 			MemberDAO dao = new MemberDAO();
 
 			if (dao.delete(memberVO)) {

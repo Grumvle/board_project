@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -42,26 +43,31 @@ public class AdminServlet extends HttpServlet {
 
 		String cmdReq = "";
 
-		String message = "";
+		PrintWriter out = response.getWriter();
 
 		cmdReq = request.getParameter("cmd");
 
 		if (cmdReq.equals("Member_List(Admin)")) {
-
+			
 			MemberDAO dao = new MemberDAO();
 			ArrayList<MemberVO> memberList = dao.getMemberList();
 			request.setAttribute("memberList", memberList);
 			RequestDispatcher view = request.getRequestDispatcher("User_Delete(Admin).jsp");
 			view.forward(request, response);
-
-		} else if (cmdReq.equals("delete")) {
-
-			String id = request.getParameter("id");
+			
+		}if (cmdReq.equals("delete")) {
+			MemberVO memberVO = new MemberVO();
+			memberVO.setId(request.getParameter("id"));
 			MemberDAO dao = new MemberDAO();
-			ArrayList<MemberVO> memberList = dao.delete(request.getParameter("id"));
-			request.setAttribute("memberList", memberList);
-			RequestDispatcher view = request.getRequestDispatcher("Delete_Member_Result(Admin).jsp");
-			view.forward(request, response);
+
+			if (dao.delete(memberVO)) {
+				RequestDispatcher view = request.getRequestDispatcher("Delete_Member_Result(Admin).jsp");
+				view.forward(request, response);
+			} else {
+				out.print("alert('회원의 탈퇴가 완료되지 않았습니다.');");
+				RequestDispatcher view = request.getRequestDispatcher("User_Delete(Admin).jsp");
+				view.forward(request, response);
+			}
 		}
 	}
 
@@ -87,7 +93,7 @@ public class AdminServlet extends HttpServlet {
 			MemberDAO dao = new MemberDAO();
 			ArrayList<MemberVO> memberList = dao.getMemberList();
 			request.setAttribute("memberList", memberList);
-			RequestDispatcher view = request.getRequestDispatcher("User_Delete(Admin");
+			RequestDispatcher view = request.getRequestDispatcher("User_Delete(Admin)");
 			view.forward(request, response);
 		}
 
