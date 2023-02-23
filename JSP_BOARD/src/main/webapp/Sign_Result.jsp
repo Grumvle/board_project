@@ -14,12 +14,7 @@ if (session.getAttribute("id") == null) {
 	<h1><%=session.getAttribute("id")%>님 <small>반갑습니다.</small>
 	</h1>
 	<a href="Sign_out.jsp">로그아웃</a>
-	<div>
-		<p>
-			<br> <a
-				href="OneUserInfo.jsp"
-				target="_self"> <strong>회원 정보 수정</strong></a>
-		</p>
-	</div>
+	
+	<a href="User_update.jsp">회원정보 수정 </a>
 </body>
 </html>

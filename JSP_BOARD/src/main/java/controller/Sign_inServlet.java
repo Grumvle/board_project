@@ -67,7 +67,7 @@ public class Sign_inServlet extends HttpServlet {
 
 		try {
 			Class.forName(jdbc_driver);
-			con = DriverManager.getConnection(jdbc_url, "web", "1234");
+			con = DriverManager.getConnection(jdbc_url, "jspbook", "1234");
 			String sql = "select * from member where member_id='" + post_id + "' and member_pwd='" + post_pw + "'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -83,7 +83,7 @@ public class Sign_inServlet extends HttpServlet {
 			if (sign_b) {
 				System.out.println("[ 로그인 성공 ]");
 
-				HttpSession httpSession = request.getSession();
+				HttpSession httpSession = request.getSession(true);
 
 				httpSession.setAttribute("name", member_name);
 
@@ -112,69 +112,19 @@ public class Sign_inServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-
 			try {
-				Class.forName(jdbc_driver);
-				con = DriverManager.getConnection(jdbc_url, "jspbook", "1234");
-				String sql = "select * from member where member_id='" + post_id + "' and member_pwd='" + post_pw + "'";
-				pstmt = con.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-
-				while (rs.next()) {
-					member_name = rs.getString("member_name");
-					member_id = rs.getString("member_id");
-					member_pwd = rs.getString("member_pwd");
-					member_phone = rs.getString("member_phone");
-					member_addr = rs.getString("member_addr");
-					sign_b = true;
-				}
-				if (sign_b) {
-					System.out.println("[ 로그인 성공 ]");
-
-					HttpSession httpSession = request.getSession();
-
-					httpSession.setAttribute("member_name", member_name);
-
-					httpSession.setAttribute("member_id", member_id);
-
-					httpSession.setAttribute("member_pwd", member_pwd);
-
-					httpSession.setAttribute("member_phone", member_phone);
-
-					httpSession.setAttribute("member_addr", member_addr);
-
-					response.sendRedirect("Sign_Result.jsp");
-
-				}
-
-				else
-
-				{
-
-					System.out.println("아이디 또는 비밀번호가 다릅니다.");
-
-					response.sendRedirect("Sign_in_failed.jsp");
-
-				}
-
+				if (con != null)
+					con.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (rs != null)
+					rs.close();
 			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (con != null)
-						con.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (rs != null)
-						rs.close();
-				} catch (Exception e) {
-					e.getStackTrace();
-				}
-
-				// TODO Auto-generated method stub
-				doGet(request, response);
+				e.getStackTrace();
 			}
 
+			// TODO Auto-generated method stub
+			doGet(request, response);
 		}
 	}
 }
