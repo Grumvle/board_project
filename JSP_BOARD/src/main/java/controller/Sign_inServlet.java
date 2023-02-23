@@ -108,10 +108,8 @@ public class Sign_inServlet extends HttpServlet {
 				 * httpSession.setAttribute("addr2", member_addrCut[2]);
 				 */
 
-				RequestDispatcher view = request.getRequestDispatcher("Sign/Login/Admin_Sign_Result.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("Admin_Sign_Result.jsp");
 				view.forward(request, response);
-
-				response.sendRedirect("Sign_Result.jsp");
 //
 			} else if (sign_b) {
 				System.out.println("[ 회원님 로그인 성공 ]");
@@ -134,11 +132,11 @@ public class Sign_inServlet extends HttpServlet {
 				 * httpSession.setAttribute("addr2", member_addrCut[2]);
 				 */
 
-				response.sendRedirect("Sign/Login/Sign_Result.jsp");
+				response.sendRedirect("Sign_Result.jsp");
 //
 			} else {
 				System.out.println("아이디 또는 비밀번호가 다릅니다.");
-				response.sendRedirect("Sign/Login/Sign_In_failed.jsp");
+				response.sendRedirect("Sign_In_failed.jsp");
 			}
 
 		} catch (Exception e) {

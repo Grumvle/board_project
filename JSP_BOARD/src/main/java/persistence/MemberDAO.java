@@ -216,7 +216,7 @@ public class MemberDAO {
 	public ArrayList<MemberVO> delete(String id) {
 		connect();
 		ArrayList<MemberVO> memberlist = new ArrayList<MemberVO>();
-		String sql = "delete from member where member_id=?";
+		String sql = "delete from member where member_id = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -225,7 +225,6 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return memberlist;
 	}
 

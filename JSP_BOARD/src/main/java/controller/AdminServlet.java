@@ -39,19 +39,30 @@ public class AdminServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String cmdReq="";
-		cmdReq=request.getParameter("cmd");
-		if(cmdReq.equals("delete")) {
-			String id=request.getParameter("id");
+
+		String cmdReq = "";
+
+		String message = "";
+
+		cmdReq = request.getParameter("cmd");
+
+		if (cmdReq.equals("Member_List(Admin)")) {
+
+			MemberDAO dao = new MemberDAO();
+			ArrayList<MemberVO> memberList = dao.getMemberList();
+			request.setAttribute("memberList", memberList);
+			RequestDispatcher view = request.getRequestDispatcher("User_Delete(Admin).jsp");
+			view.forward(request, response);
+
+		} else if (cmdReq.equals("delete")) {
+
+			String id = request.getParameter("id");
 			MemberDAO dao = new MemberDAO();
 			ArrayList<MemberVO> memberList = dao.delete(request.getParameter("id"));
 			request.setAttribute("memberList", memberList);
 			RequestDispatcher view = request.getRequestDispatcher("Delete_Member_Result(Admin).jsp");
-			view.forward(request,response);
+			view.forward(request, response);
 		}
-		
-	
 	}
 
 	/**
@@ -69,9 +80,9 @@ public class AdminServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		String cmdReq = "";
-		
+
 		String message = "";
-		
+
 		if (cmdReq.equals("Member_List(Admin)")) {
 			MemberDAO dao = new MemberDAO();
 			ArrayList<MemberVO> memberList = dao.getMemberList();
