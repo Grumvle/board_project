@@ -1,7 +1,3 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -14,17 +10,18 @@ if (session.getAttribute("id") == null) {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원정보 수정</title>
 </head>
 <body>
+	<h1><%=session.getAttribute("name")%>님 <small>반갑습니다.</small>
+	</h1>
 	<h1><%=session.getAttribute("id")%>님 <small>반갑습니다.</small>
 	</h1>
-	<a href="Sign_out.jsp">로그아웃</a>
-	<div>
-		<p>
-			<br> <a href="OneUserInfo.jsp" target="_self"> <strong>회원
-					정보 수정</strong></a>
-		</p>
-	</div>
+	<h1><%=session.getAttribute("pw")%>님 <small>반갑습니다.</small>
+	</h1>
+	<h1><%=session.getAttribute("phone")%>님 <small>반갑습니다.</small>
+	</h1>
+	<h1><%=session.getAttribute("addr")%>님 <small>반갑습니다.</small>
+	</h1>
 </body>
 </html>
