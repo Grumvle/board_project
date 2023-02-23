@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.BoardVO;
 import persistence.BoardDAO;
@@ -46,6 +47,9 @@ public class BoardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
+		HttpSession session = request.getSession();
+		String loginId = (String) session.getAttribute("ID");
 
 		String cmdReq = "";
 
@@ -60,11 +64,11 @@ public class BoardServlet extends HttpServlet {
 
 			BoardDAO boardDAO = new BoardDAO();
 
-			boardDAO.add(boardVO);
+			boardDAO.add(boardVO,loginId);
 
 			request.setAttribute("board", boardVO);
 			
-			RequestDispatcher view = request.getRequestDispatcher("Board_write.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
 		}
 	}

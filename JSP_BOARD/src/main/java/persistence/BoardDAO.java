@@ -5,11 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import model.BoardVO;
 
 public class BoardDAO {
 	// 커넥션 풀 사용?
-
+	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	String jdbc_driver = "com.mysql.cj.jdbc.Driver";
@@ -41,19 +43,19 @@ public class BoardDAO {
 
 	}
 
-	public boolean add(BoardVO vo) {
+	public boolean add(BoardVO vo, String loginId) {
 		connect();
 		String nonPwd_sql = "";
 		String pwd_sql = "";
-
+		
+		
 		if ("".equals(vo.getPwd())) {
 		
-			nonPwd_sql = "insert into board(board_writer,board_title,board_content, board_date, board_newdate)  value(?,?,?,default,null)";
+			nonPwd_sql = "insert into board(board_writer,board_title,board_content, board_date, board_newdate)  value('"+loginId+"',?,?,default,null)";
 			try {
 				pstmt = conn.prepareStatement(nonPwd_sql);
-				pstmt.setString(1, vo.getWriter());
-				pstmt.setString(2, vo.getTitle());
-				pstmt.setString(3, vo.getContent());
+				pstmt.setString(1, vo.getTitle());
+				pstmt.setString(2, vo.getContent());
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -62,13 +64,12 @@ public class BoardDAO {
 				disconnect();
 			}
 		} else { // 비밀번호가 있다면 이 sql문을 써야한다.
-			pwd_sql = "insert into board(board_writer,board_title,board_content, board_pwd, board_date, board_newdate) value(?,?,?,?,default, null)";
+			pwd_sql = "insert into board(board_writer,board_title,board_content, board_pwd, board_date, board_newdate) value('"+loginId+"',?,?,?,default, null)";
 			try {
 				pstmt = conn.prepareStatement(pwd_sql);
-				pstmt.setString(1, vo.getWriter());
-				pstmt.setString(2, vo.getTitle());
-				pstmt.setString(3, vo.getContent());
-				pstmt.setString(4, vo.getPwd());
+				pstmt.setString(1, vo.getTitle());
+				pstmt.setString(2, vo.getContent());
+				pstmt.setString(3, vo.getPwd());
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -81,9 +82,9 @@ public class BoardDAO {
 		return true;
 	}
 
-	public boolean update(BoardVO vo) {
+	public boolean update(BoardVO vo,String loginId) {
 		connect();
-		String sql = "update board set board_title= ? ,board_content = ?, board_newdate = default where board_writer = '로그인된 사용자';";
+		String sql = "update board set board_title= ? ,board_content = ?, board_newdate = default where board_writer = '"+loginId+"';";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
