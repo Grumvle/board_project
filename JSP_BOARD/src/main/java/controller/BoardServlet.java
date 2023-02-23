@@ -70,6 +70,23 @@ public class BoardServlet extends HttpServlet {
 			
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
+			
+		}else if(cmdReq.equals("update")) {
+			BoardVO boardVO = new BoardVO();
+
+			boardVO.setWriter(request.getParameter("writer"));
+			boardVO.setTitle(request.getParameter("title"));
+			boardVO.setContent(request.getParameter("content"));
+			boardVO.setPwd(request.getParameter("pwd"));
+
+			BoardDAO boardDAO = new BoardDAO();
+
+			boardDAO.add(boardVO,loginId);
+
+			request.setAttribute("board", boardVO);
+			
+			RequestDispatcher view = request.getRequestDispatcher("Board_UpdateResult.jsp");
+			view.forward(request, response);
 		}
 	}
 }
