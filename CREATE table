@@ -1,6 +1,18 @@
+CREATE TABLE `member` (
+  `member_name` varchar(50) NOT NULL,
+  `member_id` varchar(50) NOT NULL,
+  `member_pwd` varchar(100) NOT NULL,
+  `member_phone` varchar(50) NOT NULL,
+  `member_addr` varchar(500) NOT NULL,
+  PRIMARY KEY (`member_id`),
+  UNIQUE KEY `member_phone_UNIQUE` (`member_phone`),
+  UNIQUE KEY `member_id_UNIQUE` (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
 CREATE TABLE `board` (
   `board_idx` int NOT NULL AUTO_INCREMENT,
-  `board_writer` varchar(30) NOT NULL,
+  `board_writer` varchar(50) NOT NULL,
   `board_title` varchar(50) NOT NULL,
   `board_content` varchar(2400) NOT NULL,
   `board_viewcnt` int DEFAULT '0',
@@ -11,13 +23,4 @@ CREATE TABLE `board` (
   PRIMARY KEY (`board_idx`),
   KEY `member_id_idx` (`board_writer`),
   CONSTRAINT `member_id` FOREIGN KEY (`board_writer`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
-CREATE TABLE `member` (
-  `member_name` varchar(100) NOT NULL,
-  `member_id` varchar(200) NOT NULL,
-  `member_pwd` varchar(200) NOT NULL,
-  `member_phone` varchar(200) NOT NULL,
-  `member_addr` varchar(500) NOT NULL,
-  PRIMARY KEY (`member_id`)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
