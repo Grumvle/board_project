@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BoardVO;
+import model.MemberVO;
 import persistence.BoardDAO;
+import persistence.MemberDAO;
 
 /**
  * Servlet implementation class BoardServlet
@@ -70,23 +73,35 @@ public class BoardServlet extends HttpServlet {
 			
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
+		}else if(cmdReq.equals("read")) {
+			BoardDAO dao = new BoardDAO();
 			
-		}else if(cmdReq.equals("update")) {
-			BoardVO boardVO = new BoardVO();
-
-			boardVO.setWriter(request.getParameter("writer"));
-			boardVO.setTitle(request.getParameter("title"));
-			boardVO.setContent(request.getParameter("content"));
-			boardVO.setPwd(request.getParameter("pwd"));
-
-			BoardDAO boardDAO = new BoardDAO();
-
-			boardDAO.add(boardVO,loginId);
-
-			request.setAttribute("board", boardVO);
+			ArrayList<BoardVO> boardList = dao.getBoardList();
 			
-			RequestDispatcher view = request.getRequestDispatcher("Board_UpdateResult.jsp");
+			request.setAttribute("boardList", boardList);
+			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
 			view.forward(request, response);
+			
 		}
+//		else if(cmdReq.equals("update")) {
+//			BoardDAO dao = new BoardDAO();
+//			ArrayList<BoardVO> boardVO = dao.getBoardList();
+//			
+//			String id = request.getParameter("writer");
+//			
+//			boardVO.setWriter(request.getParameter("writer"));
+//			boardVO.setTitle(request.getParameter("title"));
+//			boardVO.setContent(request.getParameter("content"));
+//			boardVO.setPwd(request.getParameter("pwd"));
+//
+//			BoardDAO boardDAO = new BoardDAO();
+//
+//			boardDAO.add(boardVO,loginId);
+//
+//			request.setAttribute("board", boardVO);
+//			
+//			RequestDispatcher view = request.getRequestDispatcher("Board_UpdateResult.jsp");
+//			view.forward(request, response);
+//		}
 	}
 }

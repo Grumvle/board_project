@@ -3,7 +3,12 @@ package persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+
 import model.BoardVO;
 
 public class BoardDAO {
@@ -39,7 +44,34 @@ public class BoardDAO {
 		}
 
 	}
-
+	public ArrayList<BoardVO> getBoardList() {
+		connect();
+		ArrayList<BoardVO> boardlist = new ArrayList<BoardVO>();
+		String sql = "select * from board";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BoardVO vo = new BoardVO();
+				
+				vo.setIdx(rs.getInt("board_idx"));
+				vo.setTitle(rs.getString("board_title"));
+				vo.setContent(rs.getString("board_content"));
+				vo.setWriter(rs.getString("board_writer"));
+				vo.setDate(rs.getString("board_date"));
+				vo.setNewdate(rs.getString("board_newdate"));
+				
+				
+				boardlist.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return boardlist;
+	}
 	public boolean add(BoardVO vo, String loginId) {
 		connect();
 		String nonPwd_sql = "";
@@ -79,9 +111,9 @@ public class BoardDAO {
 		return true;
 	}
 
-	public boolean update(BoardVO vo,String loginId) {
+	public boolean update(BoardVO vo,String loginId,String boardTitle,String date) {
 		connect();
-		String sql = "update board set board_title= ? ,board_content = ?, board_newdate = default where board_writer = '"+loginId+"';";
+		String sql = "update board set board_title= ? ,board_content = ?, board_newdate = default where board_writer = '"+loginId+"' and board_title='"+boardTitle+"' and board_date='"+date+"';";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
