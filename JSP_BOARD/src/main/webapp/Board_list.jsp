@@ -10,18 +10,24 @@
 <meta charset="UTF-8">
 <title>커뮤니티 게시판</title>
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-<script>
-	var isEmpty = function(value) {
-		if (value == "" || value == null || value == undefined) {
-			return true
-		} else {
-			return false
-		}
-	};
-</script>
+
 </head>
 
 <body>
+<%
+			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
+			for (BoardVO vo : boardList) {
+			%>
+<script>
+	function isEmpty(a) {
+		
+		if (a == "" || a == null || a == undefined) {
+			return ""
+		} else {
+			return a
+		}
+	};
+</script>
 	<table border=1>
 		<tr>
 			<th>글번호</th>
@@ -32,10 +38,7 @@
 			<th>수정날짜</th>
 		</tr>
 		<tr>
-			<%
-			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
-			for (BoardVO vo : boardList) {
-			%>
+			
 		</tr>
 		<tr>
 			<td><%=vo.getIdx()%></td>
