@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BoardVO;
-import model.MemberVO;
 import persistence.BoardDAO;
-import persistence.MemberDAO;
 
 /**
  * Servlet implementation class BoardServlet
@@ -39,6 +37,18 @@ public class BoardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String cmdReq = request.getParameter("cmd");
+		
+		if(cmdReq.equals("read")) {
+			
+			BoardDAO dao = new BoardDAO();
+			
+			ArrayList<BoardVO> boardList = dao.getBoardList();
+			request.setAttribute("boardList", boardList);
+			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
+			view.forward(request, response);
+			
+		}
 	}
 
 	/**
@@ -60,7 +70,6 @@ public class BoardServlet extends HttpServlet {
 		if (cmdReq.equals("join")) {
 			BoardVO boardVO = new BoardVO();
 
-			boardVO.setWriter(request.getParameter("writer"));
 			boardVO.setTitle(request.getParameter("title"));
 			boardVO.setContent(request.getParameter("content"));
 			boardVO.setPwd(request.getParameter("pwd"));
@@ -73,15 +82,6 @@ public class BoardServlet extends HttpServlet {
 			
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
-		}else if(cmdReq.equals("read")) {
-			BoardDAO dao = new BoardDAO();
-			
-			ArrayList<BoardVO> boardList = dao.getBoardList();
-			
-			request.setAttribute("boardList", boardList);
-			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
-			view.forward(request, response);
-			
 		}
 //		else if(cmdReq.equals("update")) {
 //			BoardDAO dao = new BoardDAO();

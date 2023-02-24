@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 
 import model.BoardVO;
 
@@ -65,11 +64,13 @@ public class BoardDAO {
 				
 				boardlist.add(vo);
 			}
+			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			disconnect();
 		}
-		
 		return boardlist;
 	}
 	public boolean add(BoardVO vo, String loginId) {

@@ -65,33 +65,7 @@ public class MemberDAO {
 		return memberlist;
 	}
 
-	public ArrayList<MemberVO> getOneMemberList(String id) {
-		connect();
-		ArrayList<MemberVO> memberlist = new ArrayList<MemberVO>();
-		String sql = "select * from student where member_id = ?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				MemberVO vo = new MemberVO();
-
-				vo.setName(rs.getString("member_name"));
-				vo.setId(rs.getString("member_id"));
-				vo.setPwd(rs.getString("member_pwd"));
-				vo.setPhone(rs.getString("member_phone"));
-				vo.setAddr(rs.getString("member_addr"));
-
-				memberlist.add(vo);
-			}
-			rs.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-		return memberlist;
-	}
+	
 
 	// 회원 추가 DAO
 	public boolean add(MemberVO vo) {
