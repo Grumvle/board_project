@@ -14,10 +14,7 @@
 </head>
 
 <body>
-<%
-			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
-			for (BoardVO vo : boardList) {
-			%>
+
 
 	<table border=1>
 		<tr>
@@ -28,9 +25,10 @@
 			<th>게시날짜</th>
 			<th>수정날짜</th>
 		</tr>
-		<tr>
-			
-		</tr>
+		<%
+			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
+			for (BoardVO vo : boardList) {
+			%>
 		<tr>
 			<td><%=vo.getIdx()%></td>
 			<td><%=vo.getTitle()%></td>

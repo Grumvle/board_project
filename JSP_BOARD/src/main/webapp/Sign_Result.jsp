@@ -18,7 +18,9 @@ if (session.getAttribute("id") == null) {
 	<a href="User_update.jsp">회원정보 수정 </a>
 
 	<!-- 회원 탈퇴 시  -->
-	<a href="Delete_User.jsp"
-		target="_self">회원 탈퇴 </a>
+	<a href="Delete_User.jsp" target="_self">회원 탈퇴 </a>
+	<a href="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read" target="_self">게시글 목록 </a>
+	<a href="Board_write.jsp" target="_self">게시글 작성 </a>
+	
 </body>
 </html>
