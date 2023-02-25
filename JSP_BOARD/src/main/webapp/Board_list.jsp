@@ -18,16 +18,7 @@
 			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
 			for (BoardVO vo : boardList) {
 			%>
-<script>
-	function isEmpty(a) {
-		
-		if (a == "" || a == null || a == undefined) {
-			return ""
-		} else {
-			return a
-		}
-	};
-</script>
+
 	<table border=1>
 		<tr>
 			<th>글번호</th>
@@ -46,7 +37,7 @@
 			<td><%=vo.getContent()%></td>
 			<td><%=vo.getWriter()%></td>
 			<td><%=vo.getDate()%></td>
-			<td> isEmpty(<%=vo.getNewdate()%>) </td>
+			<td><%=vo.getNewdate()%></td>
 		</tr>
 		<%
 		}

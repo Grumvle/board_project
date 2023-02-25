@@ -2,6 +2,23 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+
+<script rel="stylesheet" type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+
 <head>
 <meta charset="UTF-8">
 <title>Log_in</title>
@@ -12,9 +29,19 @@
 
 	<form action="http://localhost:8787/JSP_BOARD/Sign_inServlet"
 		method="post">
-		아이디:<input type="text" name="id"><br /> 비밀번호:<input
-			type="password" name="pw"><br /> <input type="submit"
-			value="로그인"><br />
+				
+			<div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    로그인
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" name="id" placeholder="아이디 입력"><br />
+                    <input type="password" class="form-control" name="pw" placeholder="비밀번호 입력"><br />
+                    <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" />
+                </div>
+            </div>
+        </div>
 	</form>
 
 </body>
