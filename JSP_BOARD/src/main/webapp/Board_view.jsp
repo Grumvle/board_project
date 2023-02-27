@@ -22,11 +22,12 @@
 		<tr>
 			<th>글번호</th>
 			<th>제목</th>
-			<th>내용</th>
+			
 			<th>작성자</th>
 			<th>게시날짜</th>
 			<th>수정날짜</th>
 		</tr>
+		
 		
 		<tr>
 			<td><%=boardView.getIdx()%></td>
@@ -34,6 +35,9 @@
 			<td><%=boardView.getWriter()%></td>
 			<td><%=boardView.getDate()%></td>
 			<td><%=boardView.getNewdate()%></td>
+		</tr>
+		<tr>
+		<th>내용</th>
 		</tr>
 		<tr>
 			<td><%=boardView.getContent()%></td>
