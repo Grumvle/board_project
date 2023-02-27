@@ -38,16 +38,38 @@ public class BoardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String cmdReq = request.getParameter("cmd");
+
 		
-		if(cmdReq.equals("read")) {
-			
+		 
+			if (cmdReq.equals("view")) {
+			System.out.println("1234");
 			BoardDAO dao = new BoardDAO();
+			int idx = (Integer) request.getAttribute("idx");
+			BoardVO boardPost = dao.getBoardPostOne(idx);
+			request.setAttribute("boardPost", boardPost);
+			/*
+			boardPost.setIdx(Integer.parseInt(request.getParameter("idx")));
+			boardPost.setWriter(request.getParameter("writer"));
+			boardPost.setTitle(request.getParameter("title"));
+			boardPost.setContent(request.getParameter("content"));
+			boardPost.setViewcnt(Integer.parseInt(request.getParameter("viewcnt")));
+			boardPost.setLikecnt(Integer.parseInt(request.getParameter("likecnt")));
+			boardPost.setPwd(request.getParameter("pwd"));
+			boardPost.setDate(request.getParameter("date"));
+			boardPost.setNewdate(request.getParameter("newdate"));
+			*/
 			
+			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
+			view.forward(request, response);
+
+		}else if (cmdReq.equals("read")) {
+			BoardDAO dao = new BoardDAO();
+
 			ArrayList<BoardVO> boardList = dao.getBoardList();
 			request.setAttribute("boardList", boardList);
 			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
 			view.forward(request, response);
-			
+
 		}
 	}
 
@@ -60,7 +82,7 @@ public class BoardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
+
 		HttpSession session = request.getSession();
 		String loginId = (String) session.getAttribute("id");
 
@@ -76,32 +98,32 @@ public class BoardServlet extends HttpServlet {
 
 			BoardDAO boardDAO = new BoardDAO();
 
-			boardDAO.add(boardVO,loginId);
+			boardDAO.add(boardVO, loginId);
 
 			request.setAttribute("board", boardVO);
-			
+
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
+		} else if (cmdReq.equals("update")) {
+			BoardDAO dao = new BoardDAO();
+			int idx = (int)request.getAttribute("idx");
+			BoardVO boardVO = dao.getBoardPostOne(idx);
+
+			String id = request.getParameter("writer");
+
+			boardVO.setWriter(request.getParameter("writer"));
+			boardVO.setTitle(request.getParameter("title"));
+			boardVO.setContent(request.getParameter("content"));
+			boardVO.setPwd(request.getParameter("pwd"));
+
+			BoardDAO boardDAO = new BoardDAO();
+
+			boardDAO.add(boardVO, loginId);
+
+			request.setAttribute("board", boardVO);
+
+			RequestDispatcher view = request.getRequestDispatcher("Board_UpdateResult.jsp");
+			view.forward(request, response);
 		}
-//		else if(cmdReq.equals("update")) {
-//			BoardDAO dao = new BoardDAO();
-//			ArrayList<BoardVO> boardVO = dao.getBoardList();
-//			
-//			String id = request.getParameter("writer");
-//			
-//			boardVO.setWriter(request.getParameter("writer"));
-//			boardVO.setTitle(request.getParameter("title"));
-//			boardVO.setContent(request.getParameter("content"));
-//			boardVO.setPwd(request.getParameter("pwd"));
-//
-//			BoardDAO boardDAO = new BoardDAO();
-//
-//			boardDAO.add(boardVO,loginId);
-//
-//			request.setAttribute("board", boardVO);
-//			
-//			RequestDispatcher view = request.getRequestDispatcher("Board_UpdateResult.jsp");
-//			view.forward(request, response);
-//		}
 	}
 }

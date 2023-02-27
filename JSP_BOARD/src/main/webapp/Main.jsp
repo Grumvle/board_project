@@ -12,4 +12,4 @@
 	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">커뮤니티 게시판</button>
 	
 </body>
-</html>
+</html> 
