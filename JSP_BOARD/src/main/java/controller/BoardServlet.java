@@ -44,7 +44,7 @@ public class BoardServlet extends HttpServlet {
 			if (cmdReq.equals("view")) {
 			System.out.println("1234");
 			BoardDAO dao = new BoardDAO();
-			int idx = (Integer) request.getAttribute("idx");
+			int idx = Integer.parseInt(request.getParameter("idx"));
 			BoardVO boardPost = dao.getBoardPostOne(idx);
 			request.setAttribute("boardPost", boardPost);
 			/*

@@ -27,7 +27,7 @@
 			<th>게시날짜</th>
 			<th>수정날짜</th>
 		</tr>
-		
+			
 		<tr>
 			<td><%=boardView.getIdx()%></td>
 			<td><%=boardView.getTitle()%></td>

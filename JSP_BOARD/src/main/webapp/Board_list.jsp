@@ -30,8 +30,7 @@
 			for (BoardVO vo : boardList) {
 			%>
 		<tr>
-			<td><a href = "http://localhost:8787/JSP_BOARD/BoardServlet?cmd=view"><%=vo.getIdx()%></a></td>
-			<td><%=vo.getIdx()%></td>
+			<td><a href = "http://localhost:8787/JSP_BOARD/BoardServlet?cmd=view&idx=<%=vo.getIdx()%>"><%=vo.getIdx()%></a></td>
 			<td><%=vo.getTitle()%></td>
 			<td><%=vo.getContent()%></td>
 			<td><%=vo.getWriter()%></td>
