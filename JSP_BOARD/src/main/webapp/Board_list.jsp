@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
+	import="model.BoardVO, persistence.BoardDAO, java.util.List"
+	%>
+	<%! String idx; %>
 <!DOCTYPE html>
 
 <html>
@@ -28,9 +30,11 @@
 		<%
 		List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
 		for (BoardVO vo : boardList) {
+			
 		%>
+		
 		<tr>
-			<td><a href = "http://localhost:8787/JSP_BOARD/BoardServlet?cmd=view&idx=<%=vo.getIdx()%>"><%=vo.getIdx()%></a></td>
+			<td><a href = "http://localhost:8787/JSP_BOARD/BoardServlet?cmd=view&idx=<%= idx = vo.getIdx()%>"><%=vo.getIdx()%></a></td>
 			<td><%=vo.getTitle()%></td>
 			<td><%=vo.getContent()%></td>
 			<td><%=vo.getWriter()%></td>

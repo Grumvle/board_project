@@ -9,5 +9,6 @@
 <body>
 <!--  -->
 	<h1> 작성이 완료되었습니다.</h1>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">커뮤니티 게시판</button>
 </body>
 </html>

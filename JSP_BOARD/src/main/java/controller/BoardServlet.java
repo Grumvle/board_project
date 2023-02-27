@@ -42,25 +42,11 @@ public class BoardServlet extends HttpServlet {
 		
 		 
 			if (cmdReq.equals("view")) {
-			System.out.println("1234");
 			BoardDAO dao = new BoardDAO();
-			int idx = Integer.parseInt(request.getParameter("idx"));
+String idx = request.getParameter("idx");
 			BoardVO boardPost = dao.getBoardPostOne(idx);
 			request.setAttribute("boardPost", boardPost);
-			
-			/*
-			 * boardPost.setIdx(Integer.parseInt(request.getParameter("idx")));
-			 * boardPost.setWriter(request.getParameter("writer"));
-			 * boardPost.setTitle(request.getParameter("title"));
-			 * boardPost.setContent(request.getParameter("content"));
-			 * boardPost.setViewcnt(Integer.parseInt(request.getParameter("viewcnt")));
-			 * boardPost.setLikecnt(Integer.parseInt(request.getParameter("likecnt")));
-			 * boardPost.setPwd(request.getParameter("pwd"));
-			 * boardPost.setDate(request.getParameter("date"));
-			 * boardPost.setNewdate(request.getParameter("newdate"));
-			 */
 	
-			
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
 
@@ -72,7 +58,19 @@ public class BoardServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
 			view.forward(request, response);
 
-		}
+		} else 
+			if (cmdReq.equals("update")) {
+			System.out.println("1111");
+			BoardDAO dao = new BoardDAO();
+			String idx = request.getParameter("idx");
+			BoardVO boardPost = dao.getBoardPostOne(idx);
+			request.setAttribute("boardPost", boardPost);
+	
+			RequestDispatcher view = request.getRequestDispatcher("Board_update.jsp");
+			view.forward(request, response);
+
+		}  
+//
 	}
 
 	/**
@@ -106,25 +104,28 @@ public class BoardServlet extends HttpServlet {
 
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
-		} else if (cmdReq.equals("update")) {
+		}else if (cmdReq.equals("one")) {
 			BoardDAO dao = new BoardDAO();
-			int idx = (int)request.getAttribute("idx");
-			BoardVO boardVO = dao.getBoardPostOne(idx);
-
-			String id = request.getParameter("writer");
-
-			boardVO.setWriter(request.getParameter("writer"));
-			boardVO.setTitle(request.getParameter("title"));
-			boardVO.setContent(request.getParameter("content"));
-			boardVO.setPwd(request.getParameter("pwd"));
-
-			BoardDAO boardDAO = new BoardDAO();
-
-			boardDAO.add(boardVO, loginId);
-
-			request.setAttribute("board", boardVO);
-
-			RequestDispatcher view = request.getRequestDispatcher("Board_UpdateResult.jsp");
+			System.out.println("Servlet 시작");
+			
+			BoardVO vo = new BoardVO();
+			
+			//System.out.println(request.getParameter("content"));
+			
+			vo.setIdx(request.getParameter("idx"));
+			vo.setWriter(request.getParameter("writer"));
+			vo.setTitle(request.getParameter("title"));
+			vo.setContent(request.getParameter("content"));
+			vo.setPwd(request.getParameter("pwd"));
+			
+			System.out.println("DAO 시작전");
+			
+			
+			dao.update(vo);
+			request.setAttribute("boardPost", vo);
+			
+			System.out.println("Servlet 끝");
+			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
 		}
 	}

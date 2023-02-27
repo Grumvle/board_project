@@ -2,7 +2,7 @@ package model;
 
 public class BoardVO {
 
-	private int idx;
+	private String idx;
 	private String writer;
 	private String title;
 	private String content;
@@ -12,11 +12,11 @@ public class BoardVO {
 	private String date;
 	private String newdate;
 
-	public int getIdx() {
+	public String getIdx() {
 		return idx;
 	}
 
-	public void setIdx(int idx) {
+	public void setIdx(String idx) {
 		this.idx = idx;
 	}
 

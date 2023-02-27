@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
+import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
+<%BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
+		System.out.println(boardView.getTitle());%>
+<%! String idx; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,36 +55,34 @@
 <body>
 	<!--  -->
 	<div class="container">
-		<form action="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=join"
-			method="post">
-			<br><br>
+		<form action="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=one" method="post">
+			<br>
+			<br>
 			<fieldset>
-			<%
-			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
-			%>
 				<legend>게시물 수정</legend>
 				<ul>
-
-					<li>작성자 : <%=session.getAttribute("id")%>
+					<li>게시글 번호 : <input type="hidden" name="idx"
+						value="<%=idx = boardView.getIdx()%>"></li>
+					<li>작성자 : <input type="text" name="writer" required
+						value="<%=boardView.getWriter()%>">
 					</li>
 
 					<li>제목 : <input type="text" name="title" required
-						placeholder="공백없이 입력하세요"></li>
+						value=<%=boardView.getTitle()%>></li>
 
 					<li>비밀번호 : <input type="checkbox" name="pwd_chk"
-						value="pwd_chk"><input type="password" name="pwd"
-						placeholder="선택입력"></li>
-
-
+						value="pwd_chk">
+						<input type="password" name="pwd" placeholder="선택입력" value ="<%=boardView.getPwd()%>"></li>
+					<li>내용 : <input type ="text" name ="content" value="<%=boardView.getContent()%>"></li>
 
 				</ul>
-			
-			<textarea id="myEditor" rows="10" cols="30" class="form-control"><%=vo.getContent()%></textarea>
+					
+				<textarea id="myEditor" rows="10" cols="30" class="form-control"><%=boardView.getContent()%></textarea>
 
-			<br>
-
-				<input type="submit" name="submit" value="업로드"> <input
-					type="reset" name="reset" value="다시 작성">
+				<br> 
+				<input type="submit" value="수정">
+				<a href="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=one">수정</a> 
+				<input type="reset" name="reset" value="다시 작성">
 
 			</fieldset>
 		</form>

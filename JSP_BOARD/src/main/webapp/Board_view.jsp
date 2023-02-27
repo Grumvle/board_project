@@ -3,6 +3,7 @@
 	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
 <%BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
 		%>
+		<%! String idx; %>
 <!DOCTYPE html>
 
 <html>
@@ -46,7 +47,7 @@
 		
 	</table>
 	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">목록</button>
-	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">수정</button>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=update&idx=<%= idx =boardView.getIdx()%>';">수정</button>
 </body>
 
 </html>
