@@ -47,17 +47,19 @@ public class BoardServlet extends HttpServlet {
 			int idx = Integer.parseInt(request.getParameter("idx"));
 			BoardVO boardPost = dao.getBoardPostOne(idx);
 			request.setAttribute("boardPost", boardPost);
+			
 			/*
-			boardPost.setIdx(Integer.parseInt(request.getParameter("idx")));
-			boardPost.setWriter(request.getParameter("writer"));
-			boardPost.setTitle(request.getParameter("title"));
-			boardPost.setContent(request.getParameter("content"));
-			boardPost.setViewcnt(Integer.parseInt(request.getParameter("viewcnt")));
-			boardPost.setLikecnt(Integer.parseInt(request.getParameter("likecnt")));
-			boardPost.setPwd(request.getParameter("pwd"));
-			boardPost.setDate(request.getParameter("date"));
-			boardPost.setNewdate(request.getParameter("newdate"));
-			*/
+			 * boardPost.setIdx(Integer.parseInt(request.getParameter("idx")));
+			 * boardPost.setWriter(request.getParameter("writer"));
+			 * boardPost.setTitle(request.getParameter("title"));
+			 * boardPost.setContent(request.getParameter("content"));
+			 * boardPost.setViewcnt(Integer.parseInt(request.getParameter("viewcnt")));
+			 * boardPost.setLikecnt(Integer.parseInt(request.getParameter("likecnt")));
+			 * boardPost.setPwd(request.getParameter("pwd"));
+			 * boardPost.setDate(request.getParameter("date"));
+			 * boardPost.setNewdate(request.getParameter("newdate"));
+			 */
+	
 			
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
