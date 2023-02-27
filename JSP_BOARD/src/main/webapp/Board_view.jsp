@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
+<%BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
+		%>
 <!DOCTYPE html>
 
 <html>
@@ -25,22 +27,17 @@
 			<th>게시날짜</th>
 			<th>수정날짜</th>
 		</tr>
-		<%
-			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
-			for (BoardVO vo : boardList) {
-			%>
+		
 		<tr>
-			<td><a href = "http://localhost:8787/JSP_BOARD/BoardServlet?cmd=view"><%=vo.getIdx()%></a></td>
-			<td><%=vo.getIdx()%></td>
-			<td><%=vo.getTitle()%></td>
-			<td><%=vo.getContent()%></td>
-			<td><%=vo.getWriter()%></td>
-			<td><%=vo.getDate()%></td>
-			<td><%=vo.getNewdate()%></td>
+			<td><%=boardView.getIdx()%></td>
+			<td><%=boardView.getTitle()%></td>
+			<td><%=boardView.getWriter()%></td>
+			<td><%=boardView.getDate()%></td>
+			<td><%=boardView.getNewdate()%></td>
 		</tr>
-		<%
-		}
-		%>
+		<tr>
+			<td><%=boardView.getContent()%></td>
+		</tr>
 	</table>
 </body>
 

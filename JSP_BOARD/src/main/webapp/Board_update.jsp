@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,10 @@
 			method="post">
 			<br><br>
 			<fieldset>
-				<legend>게시물 작성</legend>
+			<%
+			List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
+			%>
+				<legend>게시물 수정</legend>
 				<ul>
 
 					<li>작성자 : <%=session.getAttribute("id")%>
@@ -72,7 +76,7 @@
 
 				</ul>
 			
-			<textarea id="myEditor" rows="10" cols="30" class="form-control"></textarea>
+			<textarea id="myEditor" rows="10" cols="30" class="form-control"><%=vo.getContent()%></textarea>
 
 			<br>
 

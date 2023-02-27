@@ -73,6 +73,37 @@ public class BoardDAO {
 		}
 		return boardlist;
 	}
+	
+	public BoardVO getBoardPostOne(int idx) {
+		connect();
+		BoardVO boardPost = new BoardVO();
+		String sql = "select * from board where board_idx = "+idx;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+					
+				boardPost.setIdx(rs.getInt("board_idx"));
+				boardPost.setTitle(rs.getString("board_title"));
+				boardPost.setContent(rs.getString("board_content"));
+				boardPost.setWriter(rs.getString("board_writer"));
+				boardPost.setDate(rs.getString("board_date"));
+				boardPost.setNewdate(rs.getString("board_newdate"));
+				     
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		return boardPost;
+	}
+	
+	
 	public boolean add(BoardVO vo, String loginId) {
 		connect();
 		String nonPwd_sql = "";

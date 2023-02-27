@@ -142,7 +142,7 @@ public class MemberDAO {
 	// 미완성. 불완전한 메서드.
 	public MemberVO readOne(String id) {
 		connect();
-		String sql = "select * from student where id like ?";
+		String sql = "select * from member where id = id";
 		MemberVO vo = new MemberVO();
 		try {
 			pstmt = conn.prepareStatement(sql);
