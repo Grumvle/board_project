@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
-<%BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
-		System.out.println(boardView.getTitle());%>
-<%! String idx; %>
+	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
+<%
+BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
+System.out.println(boardView.getTitle());
+%>
+<%!String idx;%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,52 +42,60 @@ import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
 <!-- summernote 한글 처리 관련 cnd -->
 <script
 	type="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/lang/summernote-ko-KR.js"></script>
-<!--  -->
-<script>
-	$(function() {
-		$("#myEditor").summernote({
-			lang : 'ko- KR',
-			height : 300
-		});
-	});
-</script>
 
+<style>
+	#pwd{
+		width:150px;
+		float:right;
+		position: relative;
+		bottom: 9px;
+	}
+	.container{
+		margin-top: 20px;
+	}
+	label{
+		margin-bottom:10px;
+	}
+	
+</style>
 
 </head>
 <body>
-	<!--  -->
-	<div class="container">
-		<form action="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=one" method="post">
-			<br>
-			<br>
-			<fieldset>
-				<legend>게시물 수정</legend>
-				<ul>
-					<li>게시글 번호 : <input type="hidden" name="idx"
-						value="<%=idx = boardView.getIdx()%>"></li>
-					<li>작성자 : <input type="text" name="writer" required
+	
+		<div class="container">
+		
+			<form action="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=one"
+				method="post">
+				
+				<div class="form-group">
+					<input type="hidden" name="idx"
+						value="<%=idx = boardView.getIdx()%>"> 
+						<input type="hidden" name="writer"
 						value="<%=boardView.getWriter()%>">
-					</li>
-
-					<li>제목 : <input type="text" name="title" required
-						value=<%=boardView.getTitle()%>></li>
-
-					<li>비밀번호 : <input type="checkbox" name="pwd_chk"
-						value="pwd_chk">
-						<input type="password" name="pwd" placeholder="선택입력" value ="<%=boardView.getPwd()%>"></li>
-					<li>내용 : <input type ="text" name ="content" value="<%=boardView.getContent()%>"></li>
-
-				</ul>
+						<label for="title">제목:</label>
+					<input type="text" class="form-control" id="title" name="title" value="<%=boardView.getWriter()%>">
+												
+				</div>
+				<div class="form-group">
+					<label for="content">내용: </label> 
+					<input type="text" class="form-control" id="pwd" name="pwd" value="<%=boardView.getPwd()%>"><label for="pwd" style="float:right;">비밀번호 : &nbsp</label> 
 					
-				<textarea id="myEditor" rows="10" cols="30" class="form-control"><%=boardView.getContent()%></textarea>
-
-				<br> 
-				<input type="submit" value="수정">
-				<a href="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=one">수정</a> 
-				<input type="reset" name="reset" value="다시 작성">
-
-			</fieldset>
-		</form>
-	</div>
+					<textarea class="form-control" rows="5	" id="summernote"
+						name="content"><%=boardView.getContent()%></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">글쓰기 수정</button>
+				<button type="reset" class="btn btn-danger">다시 작성</button>
+			</form>
+		</div>
+		
+	<script>
+			$(document).ready(function() {
+				$('#summernote').summernote({
+					tabsize : 2,
+					height : 500
+				});
+			});
+			
+		</script>
 </body>
 </html>
