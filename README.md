@@ -7,10 +7,7 @@
 
 <h3>Sign_up.jsp</h3>
 
-  <h3>Register.jsp</h3>
-        
-      
-      
+             
       <h3>Sign_in.jsp</h3>
         
               
