@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -39,18 +40,16 @@ public class BoardServlet extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String cmdReq = request.getParameter("cmd");
 
-		
-		 
-			if (cmdReq.equals("view")) {
+		if (cmdReq.equals("view")) {
 			BoardDAO dao = new BoardDAO();
-String idx = request.getParameter("idx");
+			String idx = request.getParameter("idx");
 			BoardVO boardPost = dao.getBoardPostOne(idx);
 			request.setAttribute("boardPost", boardPost);
-	
+
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
 
-		}else if (cmdReq.equals("read")) {
+		} else if (cmdReq.equals("read")) {
 			BoardDAO dao = new BoardDAO();
 
 			ArrayList<BoardVO> boardList = dao.getBoardList();
@@ -58,18 +57,17 @@ String idx = request.getParameter("idx");
 			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
 			view.forward(request, response);
 
-		} else 
-			if (cmdReq.equals("update")) {
+		} else if (cmdReq.equals("updateRead")) {
 			System.out.println("1111");
 			BoardDAO dao = new BoardDAO();
 			String idx = request.getParameter("idx");
 			BoardVO boardPost = dao.getBoardPostOne(idx);
 			request.setAttribute("boardPost", boardPost);
-	
+
 			RequestDispatcher view = request.getRequestDispatcher("Board_update.jsp");
 			view.forward(request, response);
 
-		}  
+		}
 //
 	}
 
@@ -104,29 +102,46 @@ String idx = request.getParameter("idx");
 
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
-		}else if (cmdReq.equals("one")) {
+
+		} else if (cmdReq.equals("update")) {
 			BoardDAO dao = new BoardDAO();
 			System.out.println("Servlet 시작");
-			
+
 			BoardVO vo = new BoardVO();
-			
-			//System.out.println(request.getParameter("content"));
-			
+
+			// System.out.println(request.getParameter("content"));
+
 			vo.setIdx(request.getParameter("idx"));
 			vo.setWriter(request.getParameter("writer"));
 			vo.setTitle(request.getParameter("title"));
 			vo.setContent(request.getParameter("content"));
-			vo.setPwd(request.getParameter("pwd"));
-			
+
+			String pwd = request.getParameter("pwd");
+			if (pwd.equals(null) || pwd.equals("")) {
+				vo.setPwd(" ");
+			} else {
+				vo.setPwd(request.getParameter("pwd"));
+			}
 			System.out.println("DAO 시작전");
-			
-			
+
 			dao.update(vo);
 			request.setAttribute("boardPost", vo);
-			
+
 			System.out.println("Servlet 끝");
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
-		}
+		} 
+			//else if (cmdReq.equals("delete")) {
+//			BoardDAO dao = new BoardDAO();
+//
+//			String idx = request.getParameter("idx");
+//
+//			dao.delete(idx);
+//
+//			PrintWriter writer = response.getWriter();
+//			writer.println("<script>alert('게시물 삭제가 완료되었습니다.'); location.href='Board_list.jsp';</script>");
+//			writer.close();
+//			response.sendRedirect("pagePath");
+//		}
 	}
 }

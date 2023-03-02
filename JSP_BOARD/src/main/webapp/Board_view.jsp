@@ -47,7 +47,8 @@
 		
 	</table>
 	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">목록</button>
-	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=update&idx=<%= idx =boardView.getIdx()%>';">수정</button>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=updateRead&idx=<%= idx =boardView.getIdx()%>';">수정</button>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=delete';">삭제</button>
 </body>
 
 </html>

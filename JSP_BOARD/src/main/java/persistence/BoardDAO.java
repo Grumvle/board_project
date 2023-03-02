@@ -156,7 +156,6 @@ public class BoardDAO {
 			pstmt.setString(2, boardVO.getContent());
 			pstmt.setString(3, boardVO.getPwd());
 			pstmt.setString(4, boardVO.getIdx());
-			System.out.println("DAO");
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -166,6 +165,19 @@ public class BoardDAO {
 			disconnect();
 		}
 		return true;
+	}
+	public void delete(String idx) {
+		connect();
+		String sql = "delete from board where idx=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
 	}
 
 }
