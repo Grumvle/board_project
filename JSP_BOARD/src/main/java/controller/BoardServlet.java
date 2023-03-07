@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -48,6 +49,7 @@ public class BoardServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
 
+<<<<<<< HEAD
 		} else if (cmdReq.equals("read2")) {
 			BoardDAO dao = new BoardDAO();
 
@@ -68,6 +70,9 @@ public class BoardServlet extends HttpServlet {
 		}
 
 		else if (cmdReq.equals("read")) {
+=======
+		} else if (cmdReq.equals("read")) {
+>>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
 			BoardDAO dao = new BoardDAO();
 
 			ArrayList<BoardVO> boardList = dao.getBoardList();
@@ -75,7 +80,11 @@ public class BoardServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
 			view.forward(request, response);
 
+<<<<<<< HEAD
 		} else if (cmdReq.equals("update")) {
+=======
+		} else if (cmdReq.equals("updateRead")) {
+>>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
 			System.out.println("1111");
 			BoardDAO dao = new BoardDAO();
 			String idx = request.getParameter("idx");
@@ -120,7 +129,12 @@ public class BoardServlet extends HttpServlet {
 
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
+<<<<<<< HEAD
 		} else if (cmdReq.equals("one")) {
+=======
+
+		} else if (cmdReq.equals("update")) {
+>>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
 			BoardDAO dao = new BoardDAO();
 			System.out.println("Servlet 시작");
 
@@ -132,8 +146,18 @@ public class BoardServlet extends HttpServlet {
 			vo.setWriter(request.getParameter("writer"));
 			vo.setTitle(request.getParameter("title"));
 			vo.setContent(request.getParameter("content"));
+<<<<<<< HEAD
 			vo.setPwd(request.getParameter("pwd"));
 
+=======
+
+			String pwd = request.getParameter("pwd");
+			if (pwd.equals(null) || pwd.equals("")) {
+				vo.setPwd(" ");
+			} else {
+				vo.setPwd(request.getParameter("pwd"));
+			}
+>>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
 			System.out.println("DAO 시작전");
 
 			dao.update(vo);
@@ -143,6 +167,21 @@ public class BoardServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
 		} 
+<<<<<<< HEAD
 
+=======
+			//else if (cmdReq.equals("delete")) {
+//			BoardDAO dao = new BoardDAO();
+//
+//			String idx = request.getParameter("idx");
+//
+//			dao.delete(idx);
+//
+//			PrintWriter writer = response.getWriter();
+//			writer.println("<script>alert('게시물 삭제가 완료되었습니다.'); location.href='Board_list.jsp';</script>");
+//			writer.close();
+//			response.sendRedirect("pagePath");
+//		}
+>>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
 	}
 }

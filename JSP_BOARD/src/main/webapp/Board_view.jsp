@@ -24,6 +24,7 @@
 				<th>글번호</th>
 				<th>제목</th>
 
+<<<<<<< HEAD
 				<th>작성자</th>
 				<th>게시날짜</th>
 				<th>수정날짜</th>
@@ -48,6 +49,38 @@
 		onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">목록</button>
 	<button
 		onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=update&idx=<%= idx =boardView.getIdx()%>';">수정</button>
+=======
+	<table border=1>
+		<tr>
+			<th>글번호</th>
+			<th>제목</th>
+			
+			<th>작성자</th>
+			<th>게시날짜</th>
+			<th>수정날짜</th>
+		</tr>
+		
+		<tr>
+			<td><%=boardView.getIdx()%></td>
+			<td><%=boardView.getTitle()%></td>
+			<td><%=boardView.getWriter()%></td>
+			<td><%=boardView.getDate()%></td>
+			<td><%=boardView.getNewdate()%></td>
+		</tr>
+		<tr>
+		<th>내용</th>
+		</tr>
+		<tr>
+			<td><%=boardView.getContent()%></td>
+		</tr>
+		
+		
+		
+	</table>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">목록</button>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=updateRead&idx=<%= idx =boardView.getIdx()%>';">수정</button>
+	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=delete';">삭제</button>
+>>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
 </body>
 
 </html>

@@ -87,7 +87,6 @@ public class AdminServlet extends HttpServlet {
 
 		String cmdReq = "";
 
-		String message = "";
 
 		if (cmdReq.equals("Member_List(Admin)")) {
 			MemberDAO dao = new MemberDAO();

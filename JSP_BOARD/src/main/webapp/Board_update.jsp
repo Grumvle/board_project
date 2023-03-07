@@ -64,7 +64,7 @@ System.out.println(boardView.getTitle());
 	
 		<div class="container">
 		
-			<form action="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=one"
+			<form action="http://localhost:8787/JSP_BOARD/BoardServlet?cmd=update"
 				method="post">
 				
 				<div class="form-group">
