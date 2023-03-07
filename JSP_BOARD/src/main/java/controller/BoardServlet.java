@@ -49,7 +49,7 @@ public class BoardServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
 
-<<<<<<< HEAD
+
 		} else if (cmdReq.equals("read2")) {
 			BoardDAO dao = new BoardDAO();
 
@@ -70,9 +70,9 @@ public class BoardServlet extends HttpServlet {
 		}
 
 		else if (cmdReq.equals("read")) {
-=======
+
 		} else if (cmdReq.equals("read")) {
->>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
+
 			BoardDAO dao = new BoardDAO();
 
 			ArrayList<BoardVO> boardList = dao.getBoardList();
@@ -80,11 +80,11 @@ public class BoardServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
 			view.forward(request, response);
 
-<<<<<<< HEAD
+
 		} else if (cmdReq.equals("update")) {
-=======
+
 		} else if (cmdReq.equals("updateRead")) {
->>>>>>> branch 'master' of https://github.com/Grumvle/board_project.git
+
 			System.out.println("1111");
 			BoardDAO dao = new BoardDAO();
 			String idx = request.getParameter("idx");
