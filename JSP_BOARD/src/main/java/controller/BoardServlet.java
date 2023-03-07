@@ -39,18 +39,35 @@ public class BoardServlet extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String cmdReq = request.getParameter("cmd");
 
-		
-		 
-			if (cmdReq.equals("view")) {
+		if (cmdReq.equals("view")) {
 			BoardDAO dao = new BoardDAO();
-String idx = request.getParameter("idx");
+			String idx = request.getParameter("idx");
 			BoardVO boardPost = dao.getBoardPostOne(idx);
 			request.setAttribute("boardPost", boardPost);
-	
+
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
 
-		}else if (cmdReq.equals("read")) {
+		} else if (cmdReq.equals("read2")) {
+			BoardDAO dao = new BoardDAO();
+
+			ArrayList<BoardVO> boardList = dao.getBoardList();
+			request.setAttribute("boardList", boardList);
+			RequestDispatcher view = request.getRequestDispatcher("Board_list(not_log_in).jsp");
+			view.forward(request, response);
+
+		} else if (cmdReq.equals("view2")) {
+			BoardDAO dao = new BoardDAO();
+			String idx = request.getParameter("idx");
+			BoardVO boardPost = dao.getBoardPostOne(idx);
+			request.setAttribute("boardPost", boardPost);
+
+			RequestDispatcher view = request.getRequestDispatcher("Board_view(not_log_in).jsp");
+			view.forward(request, response);
+
+		}
+
+		else if (cmdReq.equals("read")) {
 			BoardDAO dao = new BoardDAO();
 
 			ArrayList<BoardVO> boardList = dao.getBoardList();
@@ -58,18 +75,17 @@ String idx = request.getParameter("idx");
 			RequestDispatcher view = request.getRequestDispatcher("Board_list.jsp");
 			view.forward(request, response);
 
-		} else 
-			if (cmdReq.equals("update")) {
+		} else if (cmdReq.equals("update")) {
 			System.out.println("1111");
 			BoardDAO dao = new BoardDAO();
 			String idx = request.getParameter("idx");
 			BoardVO boardPost = dao.getBoardPostOne(idx);
 			request.setAttribute("boardPost", boardPost);
-	
+
 			RequestDispatcher view = request.getRequestDispatcher("Board_update.jsp");
 			view.forward(request, response);
 
-		}  
+		}
 //
 	}
 
@@ -104,29 +120,29 @@ String idx = request.getParameter("idx");
 
 			RequestDispatcher view = request.getRequestDispatcher("Board_result.jsp");
 			view.forward(request, response);
-		}else if (cmdReq.equals("one")) {
+		} else if (cmdReq.equals("one")) {
 			BoardDAO dao = new BoardDAO();
 			System.out.println("Servlet 시작");
-			
+
 			BoardVO vo = new BoardVO();
-			
-			//System.out.println(request.getParameter("content"));
-			
+
+			// System.out.println(request.getParameter("content"));
+
 			vo.setIdx(request.getParameter("idx"));
 			vo.setWriter(request.getParameter("writer"));
 			vo.setTitle(request.getParameter("title"));
 			vo.setContent(request.getParameter("content"));
 			vo.setPwd(request.getParameter("pwd"));
-			
+
 			System.out.println("DAO 시작전");
-			
-			
+
 			dao.update(vo);
 			request.setAttribute("boardPost", vo);
-			
+
 			System.out.println("Servlet 끝");
 			RequestDispatcher view = request.getRequestDispatcher("Board_view.jsp");
 			view.forward(request, response);
-		}
+		} 
+
 	}
 }

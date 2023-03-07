@@ -3,7 +3,7 @@
 	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
 <%BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
 		%>
-		<%! String idx; %>
+<%! String idx; %>
 <!DOCTYPE html>
 
 <html>
@@ -18,36 +18,36 @@
 
 <body>
 
+	<div>
+		<table border=1>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
 
-	<table border=1>
-		<tr>
-			<th>글번호</th>
-			<th>제목</th>
-			
-			<th>작성자</th>
-			<th>게시날짜</th>
-			<th>수정날짜</th>
-		</tr>
-		
-		<tr>
-			<td><%=boardView.getIdx()%></td>
-			<td><%=boardView.getTitle()%></td>
-			<td><%=boardView.getWriter()%></td>
-			<td><%=boardView.getDate()%></td>
-			<td><%=boardView.getNewdate()%></td>
-		</tr>
-		<tr>
-		<th>내용</th>
-		</tr>
-		<tr>
-			<td><%=boardView.getContent()%></td>
-		</tr>
-		
-		
-		
-	</table>
-	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">목록</button>
-	<button onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=update&idx=<%= idx =boardView.getIdx()%>';">수정</button>
+				<th>작성자</th>
+				<th>게시날짜</th>
+				<th>수정날짜</th>
+			</tr>
+
+			<tr>
+				<td><%=boardView.getIdx()%></td>
+				<td><%=boardView.getTitle()%></td>
+				<td><%=boardView.getWriter()%></td>
+				<td><%=boardView.getDate()%></td>
+				<td><%=boardView.getNewdate()%></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+			</tr>
+			<tr>
+				<td><%=boardView.getContent()%></td>
+			</tr>
+		</table>
+	</div>
+	<button
+		onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=read';">목록</button>
+	<button
+		onclick="location.href='http://localhost:8787/JSP_BOARD/BoardServlet?cmd=update&idx=<%= idx =boardView.getIdx()%>';">수정</button>
 </body>
 
 </html>
