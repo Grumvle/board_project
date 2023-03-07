@@ -4,59 +4,58 @@ import java.util.Date;
 
 public class CommentVO {
 
-	private int idx;
-	private String name;
-	private String password;
-	private String content;
-	private Date rdate;
-	private int ref;
+	private String commentContent;
+	private int commentID;
+	private String userID;
+	private int commentAvailable;
+	private int board_idx;
+	private String commentDate;
 
-	public int getIdx() {
-		return idx;
+	public String getCommentContent() {
+		return commentContent;
 	}
 
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
 	}
 
-	public String getName() {
-		return name;
+	public int getCommentID() {
+		return commentID;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCommentID(int commentID) {
+		this.commentID = commentID;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getUserID() {
+		return userID;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
-	public String getContent() {
-		return content;
+	public int getCommentAvailable() {
+		return commentAvailable;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setCommentAvailable(int commentAvailable) {
+		this.commentAvailable = commentAvailable;
 	}
 
-	public Date getRdate() {
-		return rdate;
+	public int getBoard_idx() {
+		return board_idx;
 	}
 
-	public void setRdate(Date rdate) {
-		this.rdate = rdate;
+	public void setBoard_idx(int board_idx) {
+		this.board_idx = board_idx;
 	}
 
-	public int getRef() {
-		return ref;
+	public String getCommentDate() {
+		return commentDate;
 	}
 
-	public void setRef(int ref) {
-		this.ref = ref;
+	public void setCommentDate(String commentDate) {
+		this.commentDate = commentDate;
 	}
-
 }
