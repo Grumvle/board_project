@@ -7,48 +7,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import model.MemberVO;
 
 public class AdminDAO {
 
-	private Connection conn = null;
-	private PreparedStatement pstmt = null;
-	String jdbc_driver = "com.mysql.cj.jdbc.Driver";
-	String jdbc_url = "jdbc:mysql://localhost/jspdb?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
-
-	void connect() {
+	private DataSource ds;
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	private static AdminDAO dao = new AdminDAO();
+	
+	private AdminDAO() {
 		try {
-			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "jspbook", "1234");
+			Context ct = new InitialContext();
+			ds = (DataSource) ct.lookup("java:comp/env/jdbc/mysql");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	void disconnect() {
-		if (pstmt != null) {
-			try {
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	public static AdminDAO getInstance() {
+		if (dao == null) {
+			dao = new AdminDAO();
 		}
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		return dao;
+	
 	}
-
 	// 멤버의 전체회원목록을 출력하기 위한 메서드
 	public ArrayList<MemberVO> getStudentList() {
-		connect();
+	
 		ArrayList<MemberVO> memberlist = new ArrayList<MemberVO>();
 		String sql = "select * from member ";
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MemberVO vo = new MemberVO();
@@ -63,17 +60,22 @@ public class AdminDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			disconnect();
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return memberlist;
 	}
 
 	// 회원의 전체정보를 수정하는 메서드
 	public boolean update(MemberVO vo) {
-		connect();
+		
 		String sql = "update member set member_name=?, member_pwd=?, member_phone=?, member_addr=? where id= ?";
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getPwd());
@@ -85,7 +87,12 @@ public class AdminDAO {
 			e.printStackTrace();
 			return false;
 		} finally {
-			disconnect();
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return true;
 	}

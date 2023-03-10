@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="model.BoardVO, persistence.BoardDAO, java.util.List"%>
 
@@ -6,7 +6,7 @@
 <%@ page import="model.BoardVO"%>
 
 <%@ page import="model.CommentVO"%>
-<%@ page import="persistence.CommentDAO"%><%--데이터베이스 접근 객체 가져오기 --%>
+<%@ page import="persistence.CommentDAO"%>데이터베이스 접근 객체 가져오기
 <%@ page import="java.util.ArrayList"%>
 <%
 BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
@@ -135,4 +135,4 @@ BoardVO boardView = (BoardVO) request.getAttribute("boardPost");
 	<script src="js/bootstrap.js"></script>
 </body>
 
-</html>
+</html> --%>

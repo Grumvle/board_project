@@ -86,9 +86,9 @@ public class MemberServlet extends HttpServlet {
 
 			/* memberVO.setAddr(request.getParameter("addr")); */
 
-			MemberDAO memberDAO = new MemberDAO();
-
-			memberDAO.add(memberVO);
+//			MemberDAO memberDAO = new MemberDAO();
+			MemberDAO dao = MemberDAO.getInstance();
+			dao.add(memberVO);
 
 			request.setAttribute("member", memberVO);
 
@@ -101,7 +101,7 @@ public class MemberServlet extends HttpServlet {
 		else if (cmdReq.equals("delete")) {
 			MemberVO memberVO = new MemberVO();
 			memberVO.setId(request.getParameter("id"));
-			MemberDAO dao = new MemberDAO();
+			MemberDAO dao = MemberDAO.getInstance();
 
 			if (dao.delete(memberVO)) {
 				message = "회원님의 탈퇴가 완료되었습니다.";
@@ -129,7 +129,7 @@ public class MemberServlet extends HttpServlet {
 			 * request.getParameter("addr1") + "=" + request.getParameter("addr2"));
 			 */
 //
-			MemberDAO dao = new MemberDAO();
+			MemberDAO dao = MemberDAO.getInstance();
 			if (dao.update(memberVO)) {
 				message = "수정이 완료되었습니다.";
 			} else {

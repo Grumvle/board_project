@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.MemberVO;
 import persistence.MemberDAO;
 
+
 /**
  * Servlet implementation class AdminServlet
  */
@@ -49,7 +50,8 @@ public class AdminServlet extends HttpServlet {
 
 		if (cmdReq.equals("Member_List(Admin)")) {
 			
-			MemberDAO dao = new MemberDAO();
+//			MemberDAO dao = new MemberDAO();
+			MemberDAO dao = MemberDAO.getInstance();
 			ArrayList<MemberVO> memberList = dao.getMemberList();
 			request.setAttribute("memberList", memberList);
 			RequestDispatcher view = request.getRequestDispatcher("User_Delete(Admin).jsp");
@@ -58,7 +60,7 @@ public class AdminServlet extends HttpServlet {
 		}if (cmdReq.equals("delete")) {
 			MemberVO memberVO = new MemberVO();
 			memberVO.setId(request.getParameter("id"));
-			MemberDAO dao = new MemberDAO();
+			MemberDAO dao = MemberDAO.getInstance();
 
 			if (dao.delete(memberVO)) {
 				RequestDispatcher view = request.getRequestDispatcher("Delete_Member_Result(Admin).jsp");
@@ -89,7 +91,7 @@ public class AdminServlet extends HttpServlet {
 
 
 		if (cmdReq.equals("Member_List(Admin)")) {
-			MemberDAO dao = new MemberDAO();
+			MemberDAO dao = MemberDAO.getInstance();
 			ArrayList<MemberVO> memberList = dao.getMemberList();
 			request.setAttribute("memberList", memberList);
 			RequestDispatcher view = request.getRequestDispatcher("User_Delete(Admin)");
